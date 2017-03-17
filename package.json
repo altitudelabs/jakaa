@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "jakaa",
   "version": "0.0.1",
-  "description": "boilerplate for universal react project with redux and babel",
+  "description": "jakaa app",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/app.js",
