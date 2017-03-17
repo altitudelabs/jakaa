@@ -1,0 +1,84 @@
+@import '../../variables';
+
+body.ReactModal__Body--open {
+  overflow-y: hidden;
+}
+.ReactModal__Overlay.search-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #FFFFFF;
+  padding: 10px;
+
+  .search {
+    .container {
+      padding: 10px;
+      position: relative;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      cursor: pointer;
+
+      .image {
+        width: 20px;
+        height: 20px;
+        background-image: url(../../asset/image/x@2x.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    .title {
+      font-size: 18px;
+      color: #51585A;
+      font-weight: $font-medium;
+    }
+
+    .input-container {
+      padding-top: 20px;
+    }
+
+    section {
+      cursor: pointer;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &.input {
+        background-color: #F1F1F1;
+        padding: 20px 15px;
+      }
+
+      &.keyword {
+
+      }
+      &.date {
+
+      }
+      &.location {
+
+      }
+      &.price {
+
+      }
+    }
+
+    .submit {
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align: center;
+      background-color: #8C64A0;
+      display: flex;
+      padding: 15px;
+    }
+  }
+}

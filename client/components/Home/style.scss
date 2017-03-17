@@ -1,0 +1,118 @@
+.home {
+  padding: 25px;
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 90px;
+    color: #51585A;
+    h1 {
+      font-size: 33px;
+    }
+    h4 {
+      font-size: 33px;
+    }
+    .gold {
+      color: #D9B783;
+    }
+    .desc {
+      font-size: 18px;
+    }
+  }
+
+  .search {
+    padding-top: 25px;
+
+    .bar {
+      position: relative;
+      background-color: #F1F1F1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+
+      .logo {
+        width: 30px;
+        height: 30px;
+        background: grey;
+      }
+      // input {
+      //   background-color: transparent;
+      //   align-self: stretch;
+      //   width: 100%;
+      // }
+      span {
+        margin-left: 5px;
+        font-size: 18px;
+      }
+    }
+  }
+
+
+  .section-title {
+    padding: 15px 0;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #51585A;
+  }
+
+  .trends {
+    padding-top: 50px;
+
+    .trend-container {
+      padding-bottom: 5px;
+      &:last-child {
+        padding-bottom: 0px;
+      }
+    }
+    .trend {
+      position: relative;
+      height: 145px;
+
+      &.high {
+        background-color: #51585A;
+      }
+
+      &.sports {
+        background: linear-gradient(bottom right, #7ABCFD, #D903E3);
+      }
+
+      &.bag {
+        background-color: #FCB377;
+      }
+
+      .text {
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  .items {
+    padding-top: 45px;
+
+    .item-container {
+      padding-bottom: 30px;
+      &:last-child {
+        padding-bottom: 0px;
+      }
+    }
+    .item {
+      position: relative;
+      .image {
+        padding-bottom: 81.5%;
+        background-color: grey;
+      }
+      .desc {
+        min-height: 65px;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .profile {
+
+      }
+      .desc-text {
+
+      }
+
+    }
+  }
+}

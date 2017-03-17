@@ -1,0 +1,42 @@
+@import "fonts";
+@import "shared";
+
+
+html {
+  height: 100%;
+
+}
+* {
+  font-family: 'OpenSans';
+  font-size: 13px;
+  color: $base-span-color;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  background-color: #F0F0F0;
+  overflow-x: hidden;
+}
+
+#app {
+  padding-left: $left-menu-width;
+  padding-top: $header-height;
+}
+
+.main-container {
+  margin: $main-container-vertical-padding $main-container-horizontal-padding;
+  min-width: $main-container-min-width;
+
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

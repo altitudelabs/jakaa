@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+server/config/environment/default-env.js
+server/api/doc.html
+dist
+client/bundle.js
+client/map
+client/bundle.css
+npm-debug.log

@@ -1,0 +1,154 @@
+@import '../../../variables';
+
+.product-detail {
+  .slider {
+    height: 260px;
+    background-color: #D1D1D1;
+  }
+  .owner-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    .profile-pic {
+      margin-right: 5px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .description {
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      .price {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .amount {
+          font-weight: $font-medium;
+          font-size: 18px;
+        }
+        .time {
+          font-size: 12px;
+        }
+      }
+      .name {
+        font-size: 18px;
+      }
+      .reviews {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .count {
+          padding-left: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+
+    .button {
+      text-align: center;
+      flex-grow: 1;
+      padding: 17px;
+    }
+    .divider {
+      width: 1px;
+      background-color: #D9D9D9;
+    }
+  }
+
+  .info {
+    padding: 30px 25px;
+    line-height: 20px;
+    color: #51585A;
+    ul {
+      padding: 0;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: $font-medium;
+      color: #51585A;
+    }
+
+    h3 {
+      color: #7C8183;
+      font-size: 16px;
+    }
+    .owner-rules {
+      h3 {
+        margin-top: 15px;
+      }
+    }
+    .item-specs {
+      ul {
+        margin-top: 15px;
+      }
+    }
+    .description {
+      span {
+        margin-top: 15px;
+        display: block;
+      }
+    }
+  }
+
+  & > .reviews {
+    padding: 25px;
+    .header {
+      padding-top: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      h2 {
+        color: #51585A;
+        font-size: 18px;
+        font-weight: $font-medium;
+      }
+      .stars {
+        padding-left: 7px;
+      }
+    }
+    & > ul {
+      padding-top: 5px;
+    }
+    li {
+      .comment {
+        display: flex;
+        flex-direction: row;
+      }
+      .profile-photo {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .content {
+        padding-left: 8px;
+        .name {
+          color: #51585A;
+          font-size: 18px;
+          font-weight: $font-medium;
+        }
+        .comment {
+          margin-top: 10px;
+          font-size: 16px;
+        }
+        .date {
+          margin-top: 15px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

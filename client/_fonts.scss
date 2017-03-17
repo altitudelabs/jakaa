@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Calibre';
+  src: url(./asset/fonts/CalibreWeb-Regular.eot); /* IE9 Compat Modes */
+  src: url(./asset/fonts/CalibreWeb-Regular.woff2) format('woff2'),
+       url(./asset/fonts/CalibreWeb-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Calibre';
+  src: url(./asset/fonts/CalibreWeb-Medium.eot); /* IE9 Compat Modes */
+  src: url(./asset/fonts/CalibreWeb-Medium.woff2) format('woff2'),
+       url(./asset/fonts/CalibreWeb-Medium.woff) format('woff');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Calibre';
+  src: url(./asset/fonts/CalibreWeb-Semibold.eot); /* IE9 Compat Modes */
+  src: url(./asset/fonts/CalibreWeb-Semibold.woff2) format('woff2'),
+       url(./asset/fonts/CalibreWeb-Semibold.woff) format('woff');
+  font-weight: bold;
+}

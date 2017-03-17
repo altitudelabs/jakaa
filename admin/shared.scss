@@ -1,0 +1,25 @@
+$header-height: 50px;
+$left-menu-width: 180px;
+
+$left-menu-title-color: #95989A;
+$left-menu-background-color: #343D50;
+$left-menu-active-link-color: #ffffff;
+$left-menu-inactive-link-color: #9FA8BA;
+
+$bread-link-color: #71777C;
+$base-span-color: #95989A;
+
+$main-container-vertical-padding: 30px;
+$main-container-horizontal-padding: 50px;
+$main-container-min-width: 500px;
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

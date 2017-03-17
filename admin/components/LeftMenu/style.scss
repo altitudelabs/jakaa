@@ -1,0 +1,39 @@
+@import "../../shared";
+
+.left-menu {
+  $horizontal-padding: 18px;
+
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: $left-menu-width;
+  background-color: $left-menu-background-color;
+  & > .header {
+    padding: 0px $horizontal-padding;
+    height: $header-height;
+    line-height: $header-height;
+    background-color: #407BFF;
+    color: #ffffff;
+    letter-spacing: 1.1px;
+  }
+
+  .menu {
+    padding-top: 22px;
+
+    .header {
+      font-size: 10px;
+      padding: 8px $horizontal-padding;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .option {
+      padding: 9px $horizontal-padding;
+      cursor: pointer;
+      &:hover, &.open {
+        background-color: #475065;
+        color: #ffffff;
+      }
+    }
+  }
+}
