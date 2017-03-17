@@ -54,7 +54,7 @@ let defaultConfig = {
     },
   },
   postgres: {
-    name: 'template-react',
+    name: 'jakaa',
   },
   maxTotalUploadSize: 1024 * 1024 * 50, // 50MB
 };

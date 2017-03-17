@@ -1,8 +1,5 @@
-# React App Template
+# Jakaa
 
-_This is a sample template for nodeJS application_
-
-**Default features include:**
 - Module bundling via [webpack](https://webpack.github.io/docs/) with auto reload
 - sass
 - Babel for client side
@@ -10,43 +7,11 @@ _This is a sample template for nodeJS application_
 - mongoDB with mongoose || postgres with sequelize
 - deployment to gh-pages
 
-**Upcoming features**
-- spritesheet generation
-
-### Folder Structure
-please refer to the wiki for high level diagram of file structure (upcoming)
-
-### Downloading the template
-```
-mkdir <Project Name>
-cd <Project Name>
-npm install altitudelabs/template-react
-mv ./node_modules/react-boilerplate/* ./
-rm -r ./node_modules
-```
-
-**if you want to add to your github repo**
-1. add remote to the your repo
-```
-cd <Project Name>
-git init
-git remote add origin <Repo URL>
-```
-2. update the name of the project on package.json
-
-3. initial commit
-```
-git add --all
-git commit -m " add AL react boilerplate "
-git push origin master
-```
-
-
 ### Running the project
 **pre requisites**
-- nodeJS
-- npm
-- database (mongo or postgres)
+- nodeJS (6.3.0)
+- npm (3.10.3)
+- Postgres
 
 **run the project**
 
@@ -77,7 +42,6 @@ development server should be running on localhost:3000.
   ```
   npm start
   ```
-
 
 ### Deploy to gh-pages
 ```

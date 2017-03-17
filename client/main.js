@@ -32,7 +32,7 @@ injectTapEventPlugin();
 // Create an enhanced history that syncs navigation events with the store
 const browserHistory = useRouterHistory(createHistory)({
   // NOTE for gh-pages
-  basename: '/template-react',
+  basename: '/jakaa',
 });
 const history = syncHistoryWithStore(browserHistory, store);
 
