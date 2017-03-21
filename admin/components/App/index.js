@@ -5,10 +5,10 @@ import List from '../List';
 import ThemeProvider from '../../composeComponents/Theme';
 import constants from '../../constants';
 
-const App = () => {
+const App = ({ router }) => {
   return (
     <ThemeProvider constants={constants}>
-      <LeftMenu />
+      <LeftMenu router={router} />
       <Nav />
       <div className={'main-container'}>
         <List
@@ -38,6 +38,7 @@ App.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  router: React.PropTypes.object.isRequired,
 };
 
 export default App;
