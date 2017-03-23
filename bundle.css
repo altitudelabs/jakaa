@@ -180,7 +180,8 @@ body.ReactModal__Body--open {
   right: 0px;
   bottom: 0px;
   background-color: #FFFFFF;
-  padding: 25px; }
+  padding: 25px;
+  overflow-y: auto; }
   .ReactModal__Overlay .close-button {
     position: absolute;
     top: -10px;
