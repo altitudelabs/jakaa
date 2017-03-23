@@ -7,37 +7,37 @@ const initialState = {
       items: [
         {
           name: 'Transaction',
-          link: '/transaction',
+          link: '/admin/transaction',
           items: [
             {
               name: 'All',
-              link: '/transaction',
+              link: '/admin/transaction',
             },
             {
               name: 'Current',
-              link: '/transaction/current',
+              link: '/admin/transaction/current',
             },
             {
               name: 'Historical',
-              link: '/transaction/historical',
+              link: '/admin/transaction/historical',
             },
           ],
         },
         {
           name: 'Users',
-          link: '/users',
+          link: '/admin/users',
         },
         {
           name: 'Delivery Schedule',
-          link: '/delivery-schedule',
+          link: '/admin/delivery-schedule',
         },
         {
           name: 'Promotion',
-          link: '/promotions',
+          link: '/admin/promotions',
         },
         {
           name: 'Anlytics',
-          link: '/anlytics',
+          link: '/admin/anlytics',
         },
       ],
     },
