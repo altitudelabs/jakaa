@@ -182,7 +182,8 @@ body.ReactModal__Body--open {
   background-color: #FFFFFF;
   overflow-y: auto; }
   .ReactModal__Overlay .close-button {
-    position: absolute;
+    background-color: #FFFFFF;
+    position: fixed;
     top: 10px;
     right: 10px;
     padding: 10px;
@@ -406,6 +407,48 @@ body.ReactModal__Body--open {
     text-align: center;
     padding-top: 15px;
     color: #7C8183; }
+.product-TOC {
+  color: #51585A;
+  font-weight: 500;
+  padding-bottom: 5px; }
+  .product-TOC .title {
+    font-size: 18px;
+    font-weight: bold; }
+  .product-TOC .instruction {
+    padding-top: 25px;
+    font-size: 16px; }
+  .product-TOC .policy {
+    padding-bottom: 40px; }
+  .product-TOC .clause {
+    padding-top: 15px;
+    font-size: 16px; }
+  .product-TOC .buttons {
+    margin: 0 -25px;
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: 16px; }
+    .product-TOC .buttons .button-container {
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      padding: 0 10px;
+      text-align: center; }
+    .product-TOC .buttons .button {
+      padding: 15px; }
+    .product-TOC .buttons .agree {
+      color: #FFFFFF;
+      background-color: #8C64A0; }
+    .product-TOC .buttons .disagree {
+      color: #7C8183; }
 body {
   padding-top: 51px; }
 
