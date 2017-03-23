@@ -134,6 +134,8 @@ class List extends Component {
   renderRow(item, index, ...arg) {
     const { selected } = this.state;
     const { renderRow } = this.props;
+    const classes = ['row'];
+    if (selected[item.id]) classes.push('selected');
 
     if (renderRow) return renderRow(item, ...arg);
     const visibles = this.getItemConfig.filter(config =>
@@ -141,7 +143,10 @@ class List extends Component {
     );
 
     return (
-      <div className="row" key={index}>
+      <div
+        key={index}
+        className={classNames(classes.join(' '))}
+      >
         {visibles.map((config, itemIndex) => {
           const { key, visible, checkbox } = config;
           const visibleText = (visible || visible === undefined) && item[key];
