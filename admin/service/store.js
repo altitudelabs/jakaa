@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 // Import all reducers
 import leftMenu from '../components/LeftMenu/reducer';
+import users from '../components/users/reducer';
 
 let composed;
 
@@ -21,6 +22,7 @@ if (window.devToolsExtension) {
 const store = createStore(
   combineReducers({
     leftMenu,
+    users,
     routing: routerReducer,
   }),
   {},
