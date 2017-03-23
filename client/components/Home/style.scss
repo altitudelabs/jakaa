@@ -98,6 +98,8 @@
     }
     .item {
       position: relative;
+      display: block;
+      
       .image {
         padding-bottom: 81.5%;
         background-color: grey;

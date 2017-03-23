@@ -29,7 +29,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'max-len': 0,
     'no-param-reassign': 0,
-    'no-console': ['error', { 'allow': ['warn', 'error'] }],
+    'no-console': 0,
     'space-before-function-paren': ['error', 'never'],
     'func-names': 0,
     'newline-per-chained-call': 0,

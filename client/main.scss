@@ -57,6 +57,8 @@ body {
 
 .button {
   cursor: pointer;
+  position: relative;
+  display: block;
 }
 
 @import "variables";
