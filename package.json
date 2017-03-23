@@ -73,8 +73,7 @@
     "uuid": "^2.0.3",
     "warning": "^3.0.0",
     "watchify": "^3.9.0",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.3"
+    "webpack": "^1.14.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -100,6 +99,6 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
-    "webpack-dev-server": "^1.15.0"
+    "webpack-dev-server": "^1.16.3"
   }
 }
