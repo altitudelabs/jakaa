@@ -15,6 +15,7 @@ class ThemedModal extends Component {
       open,
       onClose,
       children,
+      showClose,
       ...others,
     } = this.props;
 
@@ -24,10 +25,12 @@ class ThemedModal extends Component {
         isOpen={open}
         {...others}
       >
-        <div className={'close-button'} onClick={onClose}>
-          <Touchable />
-          <div className={'image'} />
-        </div>
+        {showClose ?
+          <div className={'close-button'} onClick={onClose}>
+            <Touchable />
+            <div className={'image'} />
+          </div>
+        : null}
         {children}
       </Modal>
     );
@@ -36,6 +39,7 @@ class ThemedModal extends Component {
 
 ThemedModal.defaultProps = {
   open: false,
+  showClose: true,
   onClose: () => {},
 };
 
@@ -45,6 +49,7 @@ ThemedModal.propTypes = {
     PropTypes.node,
   ]),
   open: PropTypes.bool,
+  showClose: PropTypes.bool,
   onClose: PropTypes.func,
 };
 

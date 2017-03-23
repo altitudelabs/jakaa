@@ -18,4 +18,16 @@ export default {
       open: false,
     });
   },
+  openTOC: () => {
+    store.dispatch({
+      type: getType('SET_TOC_OPEN'),
+      open: true,
+    });
+  },
+  closeTOC: () => {
+    store.dispatch({
+      type: getType('SET_TOC_OPEN'),
+      open: false,
+    });
+  },
 };

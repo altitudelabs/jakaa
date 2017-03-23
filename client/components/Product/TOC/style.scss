@@ -1,0 +1,49 @@
+@import '../../../variables';
+
+.product-TOC {
+  color: #51585A;
+  font-weight: $font-medium;
+  padding-bottom: 5px;
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .instruction {
+    padding-top: 25px;
+    font-size: 16px;
+  }
+  .policy {
+    padding-bottom: 40px;
+  }
+  .clause {
+    padding-top: 15px;
+    font-size: 16px;
+  }
+  .buttons {
+    margin: 0 -25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+
+    .button-container {
+      flex-grow: 1;
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    .button {
+      padding: 15px;
+    }
+
+    .agree {
+      color: #FFFFFF;
+      background-color: #8C64A0;
+    }
+    .disagree {
+      color: #7C8183;
+    }
+  }
+}

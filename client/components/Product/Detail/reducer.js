@@ -3,6 +3,7 @@ const prefix = 'PRODUCT_DETAIL'; // Better be unique!!!
 
 const initialState = Map({
   requestOpen: false,
+  TOCOpen: false,
 });
 
 const getNewState = (state, action) => {
@@ -11,6 +12,8 @@ const getNewState = (state, action) => {
   switch (action.type.replace(`${prefix}_#_`, '')) {
     case 'SET_REQUEST_OPEN':
       return state.set('requestOpen', action.open);
+    case 'SET_TOC_OPEN':
+      return state.set('TOCOpen', action.open);
     default:
       return state;
   }

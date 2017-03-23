@@ -18,9 +18,9 @@ class Request extends Component {
     };
   }
   render() {
-    // const {
-    //   open,
-    // } = this.props;
+    const {
+      onSubmit,
+    } = this.props;
 
     return (
       <div className={className('product-request')}>
@@ -70,7 +70,7 @@ class Request extends Component {
         >
           <div
             className={'button'}
-            onClick={action.openRequest}
+            onClick={onSubmit}
           >
             <Touchable />
             {'Request'}
@@ -87,6 +87,7 @@ class Request extends Component {
 }
 
 Request.defaultProps = {
+  onSubmit: () => {},
 };
 
 Request.propTypes = {
@@ -94,13 +95,11 @@ Request.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  open: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
-  const RequestState = state.LeftMenu.toJS();
   return {
-    open: RequestState.open,
   };
 };
 
