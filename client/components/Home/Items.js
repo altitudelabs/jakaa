@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
 import className from 'classnames';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import EventListener from 'react-event-listener';
@@ -40,7 +39,6 @@ class Items extends Component {
             return (
               <Link
                 to={'/product/example'}
-                className={'logo'}
                 className={`item ${data}`}
               >
                 <Touchable />

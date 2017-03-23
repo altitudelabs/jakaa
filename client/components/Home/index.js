@@ -1,6 +1,5 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
-import className from 'classnames';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import Header from './Header';
 import Trends from './Trends';
