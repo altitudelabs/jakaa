@@ -1,8 +1,8 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
-import { whyDidYouUpdateWrapper } from '../utils/why-did-you-update';
+import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import Modal from 'react-modal';
-import Touchable from '../composeComponents/Ripple/Touch';
+import Touchable from '../../composeComponents/Ripple/Touch';
 class ThemedModal extends Component {
   constructor(props) {
     super(props);

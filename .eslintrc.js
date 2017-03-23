@@ -28,7 +28,7 @@ module.exports = {
     'key-spacing': ['error', { 'mode': 'minimum' }],
     'import/no-unresolved': 0,
     'max-len': 0,
-    'no-param-reassign': 0,
+    'no-return-assign': 0,
     'no-console': 0,
     'space-before-function-paren': ['error', 'never'],
     'func-names': 0,

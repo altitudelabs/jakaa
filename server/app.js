@@ -21,6 +21,8 @@ const server = require('http').createServer(app);
 require('./config/global')();
 require('./config/promise')();
 require('./config/mongoose')();
+require('./config/aws')();
+
 require('./config/postgress')()
   .then(() => {
     configExpress(app);

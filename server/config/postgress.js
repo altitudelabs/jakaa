@@ -21,7 +21,8 @@ module.exports = () => {
 
   const models = fs.readdirSync(path.join(__dirname, '../api'))
     .filter(file => file.indexOf('.') === -1) // extension does not exist -> it's a folder)
-    .map(folder => require(path.join(__dirname, '../api', folder)).model); // eslint-disable-line global-require
+    .map(folder => require(path.join(__dirname, '../api', folder)).model) // eslint-disable-line global-require
+    .filter(model => !!model);
 
   models.forEach(model => {
     model.load(sequelize);

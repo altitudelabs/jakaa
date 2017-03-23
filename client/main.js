@@ -20,6 +20,7 @@ import App from './components/App';
 import Home from './components/Home';
 import {
   Detail as ProductDetail,
+  Create as ProductCreate,
 } from './components/Product';
 import {
   action as LeftMenuAction,
@@ -51,6 +52,7 @@ render(
         }}
       >
         <IndexRoute component={Home} />
+        <Route path={'product/new'} component={ProductCreate} />
         <Route path={'product/:id'} component={ProductDetail} />
         <Route path="*" component={Home} />
       </Route>

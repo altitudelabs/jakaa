@@ -44,9 +44,25 @@ let defaultConfig = {
 
   encryptionRounds: 10,
 
+  aws: {
+    accessKey: process.env.AWS_ACCESS_KEY,
+    secretKey: process.env.AWS_SECRET_KEY,
+    s3: {
+      bucketName: 'template-react',
+    },
+    sns: {
+      region: 'ap-southeast-1', // singapore
+      PlatformApplicationArn: process.env.AWS_SANDBOX_SNS_PLATFORM_APP_ARN,
+    },
+    ses: {
+      sender: 'tester@altitudelabs.com',
+      region: 'us-west-2', // US West - Oregon
+    },
+  },
+
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/react-boilerplate',
+    uri: 'mongodb://localhost/jakaa',
     options: {
       db: {
         safe: true,

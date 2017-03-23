@@ -18,7 +18,8 @@ class Home extends Component {
   }
 
   onSearchBarClick() {
-    SearchAction.open();
+    this.props.router.push('/product/new');
+    // SearchAction.open();
   }
   render() {
     return (

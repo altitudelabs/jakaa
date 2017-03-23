@@ -21,7 +21,6 @@ class Request extends Component {
     const {
       onSubmit,
     } = this.props;
-
     return (
       <div className={className('product-request')}>
         <h1 className={'title'}>{'Request an item'}</h1>
