@@ -1,25 +1,26 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import className from 'classnames';
 import { whyDidYouUpdateWrapper } from '../../../utils/why-did-you-update';
 import action from './action';
 import reducer from './reducer';
 import Divider from '../../../composeComponents/Divider';
-
+import Touchable from '../../../composeComponents/Ripple/Touch';
+import RequestSection from './RequestSection';
 class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       show: false,
     };
+    this.request = this.request.bind(this);
   }
-  render() {
-    const {
-      open,
-      params,
-    } = this.props;
 
+  request() {
+    console.log('request this!');
+  }
+
+  render() {
     return (
       <div className={'product-detail'}>
         <div className={'slider'}>
@@ -28,7 +29,9 @@ class Detail extends Component {
           <div className={'profile-pic'}>
             <img
               alt={'owner'}
-              src={require('../../../asset/image/sample-profile@2x.png')}
+              src={
+                require('../../../asset/image/sample-profile@2x.png') // eslint-disable-line global-require
+              }
             />
           </div>
           <div className={'description'}>
@@ -45,6 +48,7 @@ class Detail extends Component {
             </div>
           </div>
         </section>
+        <RequestSection />
         <div className={'actions'}>
           <div className={'message button'}>message</div>
           <div className={'divider'} />
@@ -114,7 +118,9 @@ Donec id elit non mi porta gravida at eget metus. Feel free to message me if you
                   <div className={'profile-photo'}>
                     <img
                       alt={'reviewer'}
-                      src={require('../../../asset/image/sample-profile@2x.png')}
+                      src={
+                        require('../../../asset/image/sample-profile@2x.png') // eslint-disable-line global-require
+                      }
                     />
                   </div>
                   <div className={'content'}>
@@ -128,6 +134,13 @@ Donec id elit non mi porta gravida at eget metus. Feel free to message me if you
             ))}
           </ul>
         </section>
+        <div
+          className={'request-this'}
+          onClick={action.openRequest}
+        >
+          <Touchable />
+          {'Request this'}
+        </div>
       </div>
     );
   }
@@ -146,7 +159,7 @@ Detail.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const DetailState = state.LeftMenu.toJS();
+  const DetailState = state.ProductDetail.toJS();
   return {
     open: DetailState.open,
   };

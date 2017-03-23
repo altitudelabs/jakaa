@@ -1,6 +1,7 @@
 @import '../../../variables';
 
 .product-detail {
+  padding-bottom: 55px; // for request-this butotn
   .slider {
     height: 260px;
     background-color: #D1D1D1;
@@ -150,5 +151,17 @@
         }
       }
     }
+  }
+  .request-this {
+    text-align: center;
+    background-color: #8C64A0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: $font-medium;
+    padding: 17px;
   }
 }

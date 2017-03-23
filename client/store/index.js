@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 import { reducer as LeftMenu } from '../components/LeftMenu';
 import { reducer as Search } from '../components/Search';
+import { reducer as ProductDetail } from '../components/Product/Detail';
 
 let composed;
 
@@ -23,6 +24,7 @@ const store = createStore(
     routing: routerReducer,
     LeftMenu,
     Search,
+    ProductDetail,
   }),
   {},
   composed
