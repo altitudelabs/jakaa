@@ -40,6 +40,14 @@ body {
   padding: 0;
   min-width: 320px; }
 
+.bg {
+  background-position: center;
+  background-repeat: no-repeat; }
+  .bg.cover {
+    background-size: cover; }
+  .bg.contain {
+    background-size: contain; }
+
 #app {
   min-height: 100%; }
 
@@ -596,5 +604,61 @@ nav {
 
 .compose-grid .item {
   position: relative; }
+.product-form {
+  padding: 0 25px; }
+  .product-form > section {
+    padding-top: 20px;
+    padding-bottom: 30px; }
+    .product-form > section > h2 {
+      color: #B7B9BA;
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase; }
+    .product-form > section .input-header {
+      padding-top: 20px;
+      color: #51585A;
+      font-size: 16px;
+      font-weight: 500; }
+  .product-form .description-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
+    .product-form .description-header .count {
+      color: #7C8183; }
+  .product-form .input-header .star {
+    margin-right: 5px; }
+  .product-form .item-pictures .pictures {
+    padding: 10px 0; }
+  .product-form .item-pictures .row .item > div, .product-form .item-pictures .row .item > img {
+    width: 100%;
+    height: 100%; }
+  .product-form .tip-container {
+    line-height: 20px;
+    font-size: 14px; }
+    .product-form .tip-container .title {
+      color: #D9B783;
+      font-weight: bold;
+      text-transform: uppercase; }
+    .product-form .tip-container .tip {
+      color: #51585A; }
+  .product-form .tip-list {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc; }
+.photo-upload {
+  background-color: #F1F1F1;
+  border-width: 2px;
+  border-color: #7E61A7;
+  border-style: dashed; }
 
 /*# sourceMappingURL=bundle.css.map*/
