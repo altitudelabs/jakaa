@@ -4,10 +4,11 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import List from '../ThemedElements/List';
 import Button from '../ThemedElements/Button';
-import { shortFormat } from '../../service/userService';
+import { getUsers, shortFormat } from '../../service/userService';
 import Search from '../ThemedElements/Search';
 import TrashIcon from '../ThemedElements/Icons/trash';
 import PlusIcon from '../ThemedElements/Icons/plus-circle';
+import Pagination from '../ThemedElements/Pagination';
 
 const styles = {
   icon: {
@@ -21,12 +22,24 @@ class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      page: 0,
       selected: {},
     };
 
     this.onAddTenant = this.onAddTenant.bind(this);
     this.onDeleteUser = this.onDeleteUser.bind(this);
     this.onSelectUser = this.onSelectUser.bind(this);
+    this.onPagination = this.onPagination.bind(this);
+  }
+
+  componentWillMount() {
+    const { location } = this.props;
+    const { query = {} } = location || {};
+    let page = parseInt(query.page, 10) || 1;
+    page = page - 1;
+    if (page < 0) page = 0;
+    getUsers({ page });
+    this.setState({ page });
   }
 
   onDeleteUser(e) {
@@ -37,6 +50,14 @@ class Users extends Component {
   onAddTenant(e) {
     e.preventDefault();
     // handle add a tenant in here
+  }
+
+  onPagination(page) {
+    getUsers({ page });
+    const { location } = this.props;
+    const { query = {}, pathname } = location || {};
+    query.page = page + 1;
+    this.props.router.replace({ pathname, query });
   }
 
   onSelectUser(items) {
@@ -93,8 +114,9 @@ class Users extends Component {
   }
 
   render() {
-    const { users } = this.props;
-
+    const { page } = this.state;
+    const { users, userCount, limit } = this.props;
+    const pageCount = userCount / limit;
     return (
       <div className={classNames('users')}>
         {this.renderSideTop()}
@@ -102,6 +124,11 @@ class Users extends Component {
           dataSource={shortFormat(users)}
           itemConfig={this.getItemConfig}
           onSelectChange={this.onSelectUser}
+        />
+        <Pagination
+          forcePage={page}
+          pageCount={pageCount}
+          onChange={this.onPagination}
         />
       </div>
     );
@@ -114,6 +141,10 @@ Users.defaultProps = {
 
 Users.propTypes = {
   users: PropTypes.array,
+  limit: PropTypes.number,
+  userCount: PropTypes.number,
+  router: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 const mapStatesToProps = (store) => {
