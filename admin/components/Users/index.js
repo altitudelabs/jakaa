@@ -27,6 +27,7 @@ class Users extends Component {
     };
 
     this.onAddTenant = this.onAddTenant.bind(this);
+    this.onItemClick = this.onItemClick.bind(this);
     this.onDeleteUser = this.onDeleteUser.bind(this);
     this.onSelectUser = this.onSelectUser.bind(this);
     this.onPagination = this.onPagination.bind(this);
@@ -40,6 +41,11 @@ class Users extends Component {
     if (page < 0) page = 0;
     getUsers({ page });
     this.setState({ page });
+  }
+
+  onItemClick(item, e) {
+    e.preventDefault();
+    this.props.router.push(`/admin/users/${item.id}`);
   }
 
   onDeleteUser(e) {
@@ -121,6 +127,7 @@ class Users extends Component {
       <div className={classNames('users')}>
         {this.renderSideTop()}
         <List
+          itemClick={this.onItemClick}
           dataSource={shortFormat(users)}
           itemConfig={this.getItemConfig}
           onSelectChange={this.onSelectUser}
