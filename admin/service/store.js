@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import leftMenu from '../components/LeftMenu/reducer';
 import users from '../components/users/reducer';
 import userDetail from '../components/userDetail/reducer';
+import transactions from '../components/transactions/reducer';
 
 let composed;
 
@@ -25,6 +26,7 @@ const store = createStore(
     leftMenu,
     users,
     userDetail,
+    transactions,
     routing: routerReducer,
   }),
   {},
