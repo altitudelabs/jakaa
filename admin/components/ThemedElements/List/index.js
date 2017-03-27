@@ -133,7 +133,7 @@ class List extends Component {
 
   renderRow(item, index, ...arg) {
     const { selected } = this.state;
-    const { renderRow } = this.props;
+    const { renderRow, itemClick } = this.props;
     const classes = ['row'];
     if (selected[item.id]) classes.push('selected');
 
@@ -145,6 +145,7 @@ class List extends Component {
     return (
       <div
         key={index}
+        onClick={(e) => itemClick(item, e)}
         className={classNames(classes.join(' '))}
       >
         {visibles.map((config, itemIndex) => {
@@ -189,12 +190,14 @@ class List extends Component {
 
 List.defaultProps = {
   dataSource: [],
+  itemClick: () => {},
 };
 
 List.propTypes = {
   dataSource: PropTypes.array,
   itemConfig: PropTypes.array,
   onSort: PropTypes.func,
+  itemClick: PropTypes.func,
   renderRow: PropTypes.func,
   renderHeader: PropTypes.func,
   onSelectChange: PropTypes.func,
