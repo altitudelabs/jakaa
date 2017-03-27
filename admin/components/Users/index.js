@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import List from '../ThemedElements/List';
 import Button from '../ThemedElements/Button';
-import { getUsers, shortFormat } from '../../service/userService';
+import { getUsers, shortFormat, searchUserBy } from '../../service/userService';
 import Search from '../ThemedElements/Search';
 import TrashIcon from '../ThemedElements/Icons/trash';
 import PlusIcon from '../ThemedElements/Icons/plus-circle';
@@ -24,8 +24,10 @@ class Users extends Component {
     this.state = {
       page: 0,
       selected: {},
+      searchText: '',
     };
 
+    this.onSearch = this.onSearch.bind(this);
     this.onAddTenant = this.onAddTenant.bind(this);
     this.onItemClick = this.onItemClick.bind(this);
     this.onDeleteUser = this.onDeleteUser.bind(this);
@@ -36,11 +38,36 @@ class Users extends Component {
   componentWillMount() {
     const { location } = this.props;
     const { query = {} } = location || {};
+    let searchText;
     let page = parseInt(query.page, 10) || 1;
     page = page - 1;
     if (page < 0) page = 0;
-    getUsers({ page });
-    this.setState({ page });
+    if (query.search && query.search !== '') {
+      searchText = query.search;
+      searchUserBy({ email: searchText }, { page });
+    } else {
+      getUsers({ page });
+    }
+    this.setState({ page, searchText });
+  }
+
+  onSearch(e) {
+    e.preventDefault();
+    const page = 0;
+    const { searchText } = this.search || {};
+    const { location } = this.props;
+    const { query = {}, pathname } = location || {};
+
+    if (searchText) {
+      query.search = searchText;
+      searchUserBy({ email: searchText }, { page });
+    } else {
+      delete query.search;
+      getUsers({ page });
+    }
+
+    this.props.router.replace({ pathname, query });
+    this.setState({ searchText, page });
   }
 
   onItemClick(item, e) {
@@ -89,14 +116,15 @@ class Users extends Component {
   }
 
   renderSideTop() {
-    const { selected } = this.state;
+    const { selected, searchText } = this.state;
     const displayDelete = Object.keys(selected).length > 0;
 
     return (
       <div className={classNames('header')}>
         <div className={classNames('left')}>
           <Search
-            onSearch={this.onSearch}
+            value={searchText}
+            onSubmit={this.onSearch}
             ref={(ref) => (this.search = ref)}
           />
         </div>
@@ -122,7 +150,8 @@ class Users extends Component {
   render() {
     const { page } = this.state;
     const { users, userCount, limit } = this.props;
-    const pageCount = userCount / limit;
+    const pageCount = userCount / limit + (userCount % limit > 0 ? 1 : 0);
+
     return (
       <div className={classNames('users')}>
         {this.renderSideTop()}
@@ -134,7 +163,7 @@ class Users extends Component {
         />
         <Pagination
           forcePage={page}
-          pageCount={pageCount}
+          pageCount={parseInt(pageCount, 10)}
           onChange={this.onPagination}
         />
       </div>
