@@ -53,13 +53,12 @@ class SearchField extends Component {
     const {
       onClick,
       onSelect,
-      onSubmit,
       onReset,
       onKeyDown,
       onKeyPress,
       onKeyUp,
     } = this.props;
-    return { onClick, onSelect, onSubmit, onReset, onKeyDown, onKeyPress, onKeyUp };
+    return { onClick, onSelect, onReset, onKeyDown, onKeyPress, onKeyUp };
   }
 
   renderInput() {
@@ -86,11 +85,9 @@ class SearchField extends Component {
   }
 
   renderRight() {
-    const { onSearch } = this.props;
     return (
       <button
         className={classNames('search-right')}
-        onClick={(e) => onSearch && onSearch(e)}
       >
         <SearchRightIcon />
       </button>
@@ -98,15 +95,18 @@ class SearchField extends Component {
   }
 
   render() {
+    const { onSubmit } = this.props;
+
     return (
-      <div
+      <form
         style={this.getStyle}
         className={this.getClass}
+        onSubmit={(e) => onSubmit && onSubmit(e)}
       >
         {this.renderLeft()}
         {this.renderInput()}
         {this.renderRight()}
-      </div>
+      </form>
     );
   }
 }
