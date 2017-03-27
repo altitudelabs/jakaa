@@ -18,6 +18,9 @@ import store from './service/store';
 import App from './components/App';
 import Users from './components/Users';
 import UserDetail from './components/UserDetail';
+
+import Transactions from './components/Transactions';
+
 // Needed for onTouchTap
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
@@ -35,6 +38,7 @@ render(
         <IndexRoute component={Users} />
         <Route path={'users'} component={Users} />
         <Route path={'users/:id'} component={UserDetail} />
+        <Route path={'transactions'} component={Transactions} />
       </Route>
     </Router>
   </Provider>,
