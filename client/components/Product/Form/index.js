@@ -75,7 +75,6 @@ class ProductForm extends Component {
                   return (
                     <PhotoUpload
                       onUploadComplete={(newPhotos) => {
-                        console.log(newPhotos);
                         this.setState({
                           photos: [...newPhotos, ...photos],
                         });

@@ -52,6 +52,10 @@ class LeftMenu extends Component {
         href: '/sign-in',
         label: 'sign in',
       },
+      {
+        href: '/profile/me',
+        label: 'me',
+      },
     ];
 
 

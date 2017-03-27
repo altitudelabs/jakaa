@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
 import className from 'classnames';
 import Touchable from '../../composeComponents/Ripple/Touch';
 
@@ -11,10 +10,6 @@ class Trends extends Component {
     };
   }
   render() {
-    const {
-      open,
-    } = this.props;
-
     return (
       <section className={className('trends')}>
         <h2 className={'section-title'}>trends</h2>

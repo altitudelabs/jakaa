@@ -1,0 +1,76 @@
+@import '../../variables';
+
+.profile-detail {
+  color: #51585A;
+
+  & > section {
+    padding: 0 25px;
+  }
+
+  section.info {
+    padding-top: 27px;
+    padding-bottom: 35px;
+    .profile-pic {
+      img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    .title {
+      margin-top: 13px;
+      font-weight: bold;
+      font-size: 33px;
+    }
+    .description {
+      margin-top: 20px;
+      display: block;
+      font-size: 16px;
+    }
+    .badges {
+      padding-top: 20px;
+      display: flex;
+
+      .badge {
+        display: flex;
+        align-items: center;
+        .icon {
+          background: grey;
+          width: 14px;
+          height: 14px;
+        }
+        .name {
+          color: #B7B9BA;
+          font-size: 16px;
+          font-weight: bold;
+          margin-left: 6px;
+          text-transform: uppercase;
+        }
+      }
+      .badge:not(:first-child) {
+        padding-left: 12px;
+      }
+    }
+  }
+
+  section.products, section.reviews {
+    .title {
+      font-size: 18px;
+      font-weight: $font-medium;
+    }
+  }
+
+  section.products {
+    padding-top: 15px;
+    padding-bottom: 35px;
+    .product-list {
+      padding-top: 20px;
+    }
+  }
+  section.reviews {
+    padding-top: 15px;
+    padding-bottom: 40px;
+    .review-list {
+      padding-top: 15px;
+    }
+  }
+}

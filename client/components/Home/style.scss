@@ -89,32 +89,5 @@
 
   .items {
     padding-top: 45px;
-
-    .item-container {
-      padding-bottom: 30px;
-      &:last-child {
-        padding-bottom: 0px;
-      }
-    }
-    .item {
-      position: relative;
-      display: block;
-      
-      .image {
-        padding-bottom: 81.5%;
-        background-color: grey;
-      }
-      .desc {
-        min-height: 65px;
-        background-color: rgba(0, 0, 0, 0.1);
-      }
-      .profile {
-
-      }
-      .desc-text {
-
-      }
-
-    }
   }
 }

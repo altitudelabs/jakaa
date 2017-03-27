@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-const prefix = 'SAMPLE'; // Better be unique!!!
+const prefix = 'REVIEW'; // Better be unique!!!
 
 const initialState = Map({
   open: false,

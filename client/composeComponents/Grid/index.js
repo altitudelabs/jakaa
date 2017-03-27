@@ -28,7 +28,6 @@ class Grid extends Component {
   }
 
   componentDidMount() {
-    console.log(1);
     this.onResize();
   }
   onResize() {
@@ -86,7 +85,6 @@ class Grid extends Component {
       itemData,
       verticalGutter,
     } = this.props;
-
     const {
       perRowCount,
     } = this.state;

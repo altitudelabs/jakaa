@@ -4,10 +4,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import {
   IndexRoute,
-  // IndexRedirect,
   Router,
   Route,
-  // browserHistory,
   useRouterHistory,
 } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -22,6 +20,7 @@ import {
   Detail as ProductDetail,
   Create as ProductCreate,
 } from './components/Product';
+import Profile from './components/Profile';
 import {
   action as LeftMenuAction,
 } from './components/LeftMenu';
@@ -54,6 +53,7 @@ render(
         <IndexRoute component={Home} />
         <Route path={'product/new'} component={ProductCreate} />
         <Route path={'product/:id'} component={ProductDetail} />
+        <Route path={'profile/:id'} component={Profile} />
         <Route path="*" component={Home} />
       </Route>
     </Router>
