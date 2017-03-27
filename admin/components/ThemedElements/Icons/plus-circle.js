@@ -35,5 +35,4 @@ PlusCircle.propTypes = {
   className: PropTypes.string,
 };
 
-
 export default PlusCircle;

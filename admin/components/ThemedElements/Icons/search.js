@@ -38,5 +38,4 @@ Search.propTypes = {
   className: PropTypes.string,
 };
 
-
 export default Search;

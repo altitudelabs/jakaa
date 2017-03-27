@@ -37,5 +37,4 @@ Trash.propTypes = {
   className: PropTypes.string,
 };
 
-
 export default Trash;

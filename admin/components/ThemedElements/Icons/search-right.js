@@ -55,5 +55,4 @@ SearchRight.propTypes = {
   className: PropTypes.string,
 };
 
-
 export default SearchRight;
