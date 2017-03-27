@@ -29,7 +29,6 @@ class Users extends Component {
 
     this.onSearch = this.onSearch.bind(this);
     this.onAddTenant = this.onAddTenant.bind(this);
-    this.onItemClick = this.onItemClick.bind(this);
     this.onDeleteUser = this.onDeleteUser.bind(this);
     this.onSelectUser = this.onSelectUser.bind(this);
     this.onPagination = this.onPagination.bind(this);
@@ -70,11 +69,6 @@ class Users extends Component {
     this.setState({ searchText, page });
   }
 
-  onItemClick(item, e) {
-    e.preventDefault();
-    this.props.router.push(`/admin/users/${item.id}`);
-  }
-
   onDeleteUser(e) {
     e.preventDefault();
     // handle delete user in here
@@ -90,16 +84,21 @@ class Users extends Component {
     const { location } = this.props;
     const { query = {}, pathname } = location || {};
     query.page = page + 1;
+    this.setState({ selected: {} });
     this.props.router.replace({ pathname, query });
   }
 
-  onSelectUser(items) {
+  onSelectUser(key, items) {
     const selected = items.reduce((obj, item) => {
-      obj[item.item] = true;
+      obj[item.id] = true;
       return obj;
     }, {});
 
     this.setState({ selected });
+
+    if (key !== 'id' && items.length === 1) {
+      this.props.router.push(`/admin/users/${items[0].id}`);
+    }
   }
 
   get getItemConfig() {
@@ -148,7 +147,7 @@ class Users extends Component {
   }
 
   render() {
-    const { page } = this.state;
+    const { page, selected } = this.state;
     const { users, userCount, limit } = this.props;
     const pageCount = userCount / limit + (userCount % limit > 0 ? 1 : 0);
 
@@ -156,7 +155,7 @@ class Users extends Component {
       <div className={classNames('users')}>
         {this.renderSideTop()}
         <List
-          itemClick={this.onItemClick}
+          selected={selected}
           dataSource={shortFormat(users)}
           itemConfig={this.getItemConfig}
           onSelectChange={this.onSelectUser}

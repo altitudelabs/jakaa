@@ -30,9 +30,13 @@ class List extends Component {
       const dataSource = this.sortDataSource(dataSourceProps, sortState);
       this.setState({ dataSource });
     }
+
+    if (props.selected !== this.state.selected) {
+      this.setState({ selected: props.selected });
+    }
   }
 
-  onSelect(checked, item, all) {
+  onSelect(key, checked, item, all) {
     let ids = {};
     let items = [];
     const { onSelectChange } = this.props;
@@ -53,7 +57,7 @@ class List extends Component {
     }
 
     this.setState({ selected: ids });
-    if (onSelectChange) onSelectChange(items, all);
+    if (onSelectChange) onSelectChange(key, items, all);
   }
 
   get getItemConfig() {
@@ -121,7 +125,7 @@ class List extends Component {
               {checkbox && (
                 <Checkbox
                   checked={all}
-                  onCheck={() => this.onSelect(!all, item, true)}
+                  onCheck={() => this.onSelect(key, !all, item, true)}
                 />
               )}
             </div>
@@ -156,7 +160,7 @@ class List extends Component {
             <div
               className="item"
               key={itemIndex}
-              onClick={() => this.onSelect(!selected[item.id], item)}
+              onClick={() => this.onSelect(key, !selected[item.id], item)}
             >
               {visibleText}
               {checkbox && (
@@ -189,6 +193,7 @@ class List extends Component {
 }
 
 List.defaultProps = {
+  selected: {},
   dataSource: [],
   itemClick: () => {},
 };
