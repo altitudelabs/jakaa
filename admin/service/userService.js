@@ -12,10 +12,46 @@ export const getUsers = ({ page = 0, limit = 10 }) => {
   });
 };
 
+export const getUserBy = (conditions) => {
+  return fakerUsers.filter(user => Object.keys(conditions).map(key => user[key] === conditions[key]).indexOf(false) === -1);
+}
+
+export const getUserById = (id) => {
+  id = parseInt(id, 10);
+  const user = fakerUsers.filter(user => user.id === id)[0] || {};
+  store.dispatch({
+    user,
+    type: 'SET_USER_DETAIL',
+  });
+}
+
 export const shortFormat = (users) => {
   return users.map(user => {
     const { firstName, lastName } = user;
+    let status;
+
+    ['isApproved', 'banned', 'isDeleted'].forEach(item => {
+      if (user[item]) {
+        switch(item) {
+          case 'isApproved':
+            status = 'Enabled';
+            break;
+          case 'banned':
+            status = 'Banned';
+            break;
+          case 'isDeleted':
+            status = 'Deleted';
+            break;
+          default:
+            status = 'Disabled';
+            break;
+        }
+      }
+    })
+
+    if (!status) status = 'Disabled';
+
     const fullName = [firstName, lastName].join(' ');
-    return { ...user, fullName };
+    return { ...user, fullName, status };
   });
 };
