@@ -61,6 +61,7 @@ class Transactions extends Component {
     const { searchText } = this.search || {};
     const { location } = this.props;
     const { query = {}, pathname } = location || {};
+    query.page = 1;
 
     if (searchText) {
       query.search = searchText;
@@ -70,8 +71,8 @@ class Transactions extends Component {
       getTransactions({ page });
     }
 
-    this.props.router.replace({ pathname, query });
     this.setState({ searchText, page });
+    this.props.router.replace({ pathname, query });
   }
 
   onDeleteTransaction(e) {
@@ -85,11 +86,18 @@ class Transactions extends Component {
   }
 
   onPagination(page) {
-    getTransactions({ page });
     const { location } = this.props;
     const { query = {}, pathname } = location || {};
     query.page = page + 1;
-    this.setState({ selected: {} });
+    const searchText = query.search || '';
+
+    if (searchText !== '') {
+      searchTransactionBy({ item: searchText }, { page });
+    } else {
+      getTransactions({ page });
+    }
+
+    this.setState({ selected: {}, page, searchText });
     this.props.router.replace({ pathname, query });
   }
 
