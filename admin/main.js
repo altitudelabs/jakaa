@@ -18,6 +18,7 @@ import store from './service/store';
 import App from './components/App';
 import Users from './components/Users';
 import UserDetail from './components/UserDetail';
+import Promotions from './components/Promotions';
 import Transactions from './components/Transactions';
 import TransactionDetail from './components/TransactionDetail';
 
@@ -41,6 +42,9 @@ render(
         <Route path={'transactions'}>
           <IndexRoute component={Transactions} />
           <Route path={':id'} component={TransactionDetail} />
+        </Route>
+        <Route path={'promotions'}>
+          <IndexRoute component={Promotions} />
         </Route>
       </Route>
     </Router>

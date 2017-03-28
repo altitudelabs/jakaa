@@ -8,6 +8,7 @@ import users from '../components/users/reducer';
 import userDetail from '../components/userDetail/reducer';
 import transactions from '../components/transactions/reducer';
 import transactionDetail from '../components/transactionDetail/reducer';
+import promotions from '../components/promotions/reducer';
 
 let composed;
 
@@ -29,6 +30,7 @@ const store = createStore(
     userDetail,
     transactions,
     transactionDetail,
+    promotions,
     routing: routerReducer,
   }),
   {},
