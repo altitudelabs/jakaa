@@ -42,28 +42,32 @@ export const shortFormat = (transaction) => {
   const borrower = fakerUsers[borrowerId - 1];
   const owner = fakerUsers[ownerId - 1];
 
-  ['isApproved', 'banned', 'isDeleted'].forEach(item => {
+  ['isPending', 'isApproved', 'isDelivered', 'isCancelled'].forEach(item => {
     if (transaction[item]) {
       switch (item) {
+        case 'isPending':
+          status = 'Pending request';
+          break;
         case 'isApproved':
-          status = 'Enabled';
+          status = 'Approved';
           break;
-        case 'banned':
-          status = 'Banned';
+        case 'isDelivered':
+          status = 'Delivered';
           break;
-        case 'isDeleted':
-          status = 'Deleted';
+        case 'isCancelled':
+          status = 'Cancelled';
           break;
         default:
-          status = 'Disabled';
+          status = 'Pending request';
           break;
       }
     }
   });
 
   const rentalPeriod = [periodStart, periodEnd].join(' - ');
-  if (!status) status = 'Disabled';
-  return { ...transaction, borrower, owner, rentalPeriod, status, orderId: `Order ${orderId}`, rentalCost: `HK$ ${rentalCost}` };
+  if (!status) status = 'Pending request  ';
+
+  return { ...transaction, borrower, owner, rentalPeriod, status, orderId, rentalCost: `HK$ ${rentalCost}` };
 };
 
 export const shortFormats = (transactions) => {
