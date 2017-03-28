@@ -1,5 +1,6 @@
 import store from './store';
 import fakerTransactions from '../fakers/transactions';
+import fakerUsers from '../fakers/users';
 
 export const fetchTransactions = (dataSource, { page = 0, limit = 10 }) => {
   const offset = page * limit;
@@ -37,7 +38,9 @@ export const getTransactionById = (id) => {
 
 export const shortFormat = (transaction) => {
   let status;
-  const { periodStart, periodEnd, orderId, rentalCost } = transaction;
+  const { periodStart, periodEnd, orderId, rentalCost, borrowerId, ownerId } = transaction;
+  const borrower = fakerUsers[borrowerId - 1];
+  const owner = fakerUsers[ownerId - 1];
 
   ['isApproved', 'banned', 'isDeleted'].forEach(item => {
     if (transaction[item]) {
@@ -60,8 +63,8 @@ export const shortFormat = (transaction) => {
 
   const rentalPeriod = [periodStart, periodEnd].join(' - ');
   if (!status) status = 'Disabled';
-  return { ...transaction, rentalPeriod, status, orderId: `Order ${orderId}`, rentalCost: `HK$ ${rentalCost}` };
-}
+  return { ...transaction, borrower, owner, rentalPeriod, status, orderId: `Order ${orderId}`, rentalCost: `HK$ ${rentalCost}` };
+};
 
 export const shortFormats = (transactions) => {
   return transactions.map(transaction => shortFormat(transaction));

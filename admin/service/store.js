@@ -7,6 +7,7 @@ import leftMenu from '../components/LeftMenu/reducer';
 import users from '../components/users/reducer';
 import userDetail from '../components/userDetail/reducer';
 import transactions from '../components/transactions/reducer';
+import transactionDetail from '../components/transactionDetail/reducer';
 
 let composed;
 
@@ -27,6 +28,7 @@ const store = createStore(
     users,
     userDetail,
     transactions,
+    transactionDetail,
     routing: routerReducer,
   }),
   {},

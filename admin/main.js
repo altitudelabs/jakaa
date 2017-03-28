@@ -18,8 +18,8 @@ import store from './service/store';
 import App from './components/App';
 import Users from './components/Users';
 import UserDetail from './components/UserDetail';
-
 import Transactions from './components/Transactions';
+import TransactionDetail from './components/TransactionDetail';
 
 // Needed for onTouchTap
 // Check this repo:
@@ -39,6 +39,7 @@ render(
         <Route path={'users'} component={Users} />
         <Route path={'users/:id'} component={UserDetail} />
         <Route path={'transactions'} component={Transactions} />
+        <Route path={'transactions/:id'} component={TransactionDetail} />
       </Route>
     </Router>
   </Provider>,
