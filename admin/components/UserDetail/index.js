@@ -3,10 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { getUserById } from '../../service/userService';
-import Button from '../ThemedElements/Button';
-import Star from '../ThemedElements/Icons/star';
 import Checked from '../ThemedElements/Icons/checked';
-import NotAllowed from '../ThemedElements/Icons/not-allowed';
+import Header from './Header';
 
 class UserDetail extends Component {
   componentWillMount() {
@@ -14,85 +12,11 @@ class UserDetail extends Component {
     getUserById(id);
   }
 
-  renderBanned() {
-    const { banned } = this.props.detail || {};
-    let button = (
-      <Button>
-        Baned user
-      </Button>
-    );
-
-    if (banned) {
-      button = (
-        <Button
-          disabled
-          disabledClass="disabled"
-        >
-          <NotAllowed className="icon" /> Baned user
-        </Button>
-      );
-    }
-
-    return <div>{button}</div>;
-  }
-
-  renderReview() {
-    const { reviewAvg = 0, reviewCount = 0 } = this.props.detail || {};
-
-    return (
-      <div className="review">
-        {
-          [...new Array(5).keys()].map(index => {
-            const star = { key: index };
-            if (reviewAvg > index) star.fill = true;
-            return <Star {...star} />;
-          })
-        }
-        <span>
-          - {reviewCount} Review{reviewCount > 1 && 's'}
-        </span>
-      </div>
-    );
-  }
-
   renderItem(title, caption, key) {
     return (
       <div key={key} className={classNames('info')}>
         {title && <div className={classNames('title')}>{title}</div>}
         {caption && <div className={classNames('caption')}>{caption}</div>}
-      </div>
-    );
-  }
-
-  renderHeader() {
-    const { detail } = this.props;
-    const { image, firstName, lastName, email, phone, isApproved } = detail || {};
-    const fullName = [firstName, lastName].join(' ');
-
-    return (
-      <div className={classNames('row header')}>
-        <div className={classNames('image')}>
-          <img src={image} alt={fullName} title={fullName} />
-        </div>
-        <div className={classNames('detail')}>
-          <div className={classNames('info')}>
-            <div className={classNames('title')}>
-              {fullName}
-              {!isApproved && <span>ID Unapproved</span>}
-              {isApproved && <span><Checked /> ID Approved</span>}
-            </div>
-            <div className={classNames('caption-group')}>
-              <div className={classNames('caption')}>
-                Email: {email}
-              </div>
-              <div className={classNames('caption')}>
-                Phone: {phone}
-              </div>
-            </div>
-            {this.renderReview()}
-          </div>
-          {this.renderBanned()}
-        </div>
       </div>
     );
   }
@@ -165,7 +89,7 @@ class UserDetail extends Component {
   render() {
     return (
       <div className={classNames('user-detail')}>
-        {this.renderHeader()}
+        <Header detail={this.props.detail} />
         {this.renderPersonalDetail()}
         {this.renderVerification()}
         {this.renderAccountSetting()}
