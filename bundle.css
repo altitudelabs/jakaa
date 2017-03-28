@@ -136,7 +136,8 @@ body.no-scroll {
   padding: 10px 21px 10px 25px; }
 
 .left-menu .item {
-  position: relative; }
+  position: relative;
+  text-transform: capitalize; }
   .left-menu .item a {
     padding: 10px 0; }
     .left-menu .item a.current-link {
@@ -723,5 +724,15 @@ nav {
     padding-bottom: 40px; }
     .profile-detail section.reviews .review-list {
       padding-top: 15px; }
+.wish-list {
+  padding: 25px; }
+  .wish-list h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #51585A;
+    padding-top: 5px; }
+  .wish-list .product-list {
+    padding-top: 25px;
+    padding-bottom: 35px; }
 
 /*# sourceMappingURL=bundle.css.map*/

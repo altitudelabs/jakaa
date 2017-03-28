@@ -24086,6 +24086,10 @@
 	
 	var _LeftMenu = __webpack_require__(335);
 	
+	var _WishList = __webpack_require__(718);
+	
+	var _WishList2 = _interopRequireDefault(_WishList);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Needed for onTouchTap
@@ -24122,6 +24126,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: 'product/new', component: _Product.Create }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'product/:id', component: _Product.Detail }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'profile/:id', component: _Profile2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'wishlist', component: _WishList2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Home2.default })
 	    )
 	  )
@@ -53003,6 +53008,14 @@
 	      }, {
 	        href: '/profile/me',
 	        label: 'me'
+	      }, {
+	        href: '/wishlist',
+	        label: 'wishlist'
+	      },
+	      // TODO remove - this is only here for testing
+	      {
+	        href: '/product/new',
+	        label: 'new product'
 	      }];
 	
 	      // TODO may be able to optimize height calc like flipkart on touchmove
@@ -70335,8 +70348,8 @@
 	  _createClass(Home, [{
 	    key: 'onSearchBarClick',
 	    value: function onSearchBarClick() {
-	      this.props.router.push('/product/new');
-	      // SearchAction.open();
+	      // this.props.router.push('/product/new');
+	      _Search.action.open();
 	    }
 	  }, {
 	    key: 'render',
@@ -74325,6 +74338,83 @@
 	
 	exports.default = getNewState;
 	exports.prefix = prefix;
+
+/***/ },
+/* 718 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	__webpack_require__(719);
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(338);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _whyDidYouUpdate = __webpack_require__(436);
+	
+	var _Product = __webpack_require__(595);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var WishList = function (_Component) {
+	  _inherits(WishList, _Component);
+	
+	  function WishList(props) {
+	    _classCallCheck(this, WishList);
+	
+	    var _this = _possibleConstructorReturn(this, (WishList.__proto__ || Object.getPrototypeOf(WishList)).call(this, props));
+	
+	    _this.state = {};
+	    return _this;
+	  }
+	
+	  _createClass(WishList, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: (0, _classnames2.default)('wish-list') },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Wish List'
+	        ),
+	        _react2.default.createElement(_Product.List, null)
+	      );
+	    }
+	  }]);
+	
+	  return WishList;
+	}(_react.Component);
+	
+	WishList.defaultProps = {};
+	
+	WishList.propTypes = {};
+	
+	exports.default = (0, _whyDidYouUpdate.whyDidYouUpdateWrapper)(WishList);
+
+/***/ },
+/* 719 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
