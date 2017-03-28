@@ -24,6 +24,7 @@ import Profile from './components/Profile';
 import {
   action as LeftMenuAction,
 } from './components/LeftMenu';
+import WishList from './components/WishList';
 // Needed for onTouchTap
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
@@ -54,6 +55,7 @@ render(
         <Route path={'product/new'} component={ProductCreate} />
         <Route path={'product/:id'} component={ProductDetail} />
         <Route path={'profile/:id'} component={Profile} />
+        <Route path={'wishlist'} component={WishList} />
         <Route path="*" component={Home} />
       </Route>
     </Router>
