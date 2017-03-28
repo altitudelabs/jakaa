@@ -73,9 +73,14 @@ class List extends Component {
 
   sortDataSource(items, sort) {
     const { key, descending } = sort || {};
+    const data = this.getItemConfig.filter(item => item.key === key)[0] || {};
     if (!key) return items;
-
     return items.sort((a, b) => {
+      if (data.date) {
+        a = { ...a, [key]: new Date(a[key]) };
+        b = { ...b, [key]: new Date(b[key]) };
+      }
+
       const [first, second] = descending ? [a, b] : [b, a];
       if (first[key] < second[key]) return 1;
       if (first[key] > second[key]) return -1;
