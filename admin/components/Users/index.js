@@ -56,6 +56,7 @@ class Users extends Component {
     const { searchText } = this.search || {};
     const { location } = this.props;
     const { query = {}, pathname } = location || {};
+    query.page = 1;
 
     if (searchText) {
       query.search = searchText;
@@ -80,11 +81,18 @@ class Users extends Component {
   }
 
   onPagination(page) {
-    getUsers({ page });
     const { location } = this.props;
     const { query = {}, pathname } = location || {};
     query.page = page + 1;
-    this.setState({ selected: {} });
+    const searchText = query.search || '';
+
+    if (searchText !== '') {
+      searchUserBy({ email: searchText }, { page });
+    } else {
+      getUsers({ page });
+    }
+
+    this.setState({ selected: {}, page, searchText });
     this.props.router.replace({ pathname, query });
   }
 

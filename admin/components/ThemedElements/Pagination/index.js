@@ -18,7 +18,7 @@ class Pagination extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { forcePage } = nextProps;
-    if (forcePage && this.props.forcePage !== forcePage) {
+    if (this.props.forcePage !== forcePage) {
       this.setState({ selected: forcePage });
     }
   }
