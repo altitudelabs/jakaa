@@ -9,10 +9,8 @@ import {
   getTransactions,
   searchTransactionBy,
 } from '../../service/transactionService';
-
 import Search from '../ThemedElements/Search';
 import TrashIcon from '../ThemedElements/Icons/trash';
-import PlusIcon from '../ThemedElements/Icons/plus-circle';
 import Pagination from '../ThemedElements/Pagination';
 
 const styles = {
@@ -33,7 +31,6 @@ class Transactions extends Component {
     };
 
     this.onSearch = this.onSearch.bind(this);
-    this.onAddTenant = this.onAddTenant.bind(this);
     this.onDeleteTransaction = this.onDeleteTransaction.bind(this);
     this.onSelectTransaction = this.onSelectTransaction.bind(this);
     this.onPagination = this.onPagination.bind(this);
@@ -78,11 +75,6 @@ class Transactions extends Component {
   onDeleteTransaction(e) {
     e.preventDefault();
     // handle delete Transaction in here
-  }
-
-  onAddTenant(e) {
-    e.preventDefault();
-    // handle add a tenant in here
   }
 
   onPagination(page) {
@@ -152,12 +144,6 @@ class Transactions extends Component {
               icon={<TrashIcon style={styles.icon} />}
             />
           }
-          <Button
-            className="add"
-            text="Add a Tenant"
-            onClick={this.onAddTenant}
-            icon={<PlusIcon style={styles.icon} />}
-          />
         </div>
       </div>
     );
