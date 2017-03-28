@@ -115,12 +115,12 @@ class TransactionDetail extends Component {
     );
   }
 
-  renderDilivery() {
+  renderDelivery() {
     const pickup = this.getPickup;
 
     return (
       <div className="row">
-        <div className="subtitle"> Dilivery </div>
+        <div className="subtitle"> Delivery </div>
         <div className="subtitle"> 1. Pickup </div>
         <div>
           {this.renderItem('Shipping method', 'Fedex')}
@@ -154,7 +154,7 @@ class TransactionDetail extends Component {
         {this.renderHeader()}
         {this.renderPersonals()}
         {this.renderOrderDetail()}
-        {this.renderDilivery()}
+        {this.renderDelivery()}
         {this.renderReviews()}
       </div>
     );
