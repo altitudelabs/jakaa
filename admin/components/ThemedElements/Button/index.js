@@ -6,7 +6,9 @@ import classNames from 'classnames';
 class Button extends Component {
   get getClass() {
     const { className, disabled } = this.props;
-    return classNames(`button ${disabled && 'disabled'} ${className}`);
+    const classes = ['button', className];
+    if (disabled) classes.push('disabled');
+    return classNames(classes);
   }
 
   get getStyle() {
