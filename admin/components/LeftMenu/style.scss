@@ -31,32 +31,29 @@
       text-transform: uppercase;
     }
 
-    .option {
+    .menu-item {
       padding: 9px $horizontal-padding;
       cursor: pointer;
-      @include transition(all 0.4s);
 
-      &:hover, &.open {
+      &:hover, &.open, > .active, > .active + .sub-menu {
         background-color: #475065;
-
-        > span {
-          color: #ffffff;
-        }
+        color: #ffffff;
       }
 
-      > .option {
-        display: none;
-      }
-
-      span {
+      a {
         display: block;
         cursor: pointer;
+        text-decoration: none;
       }
     }
   }
 
   .dropdown {
-    > span {
+    .sub-menu {
+      display: none;
+    }
+
+    > a {
       position: relative;
 
       &:after {
@@ -74,19 +71,23 @@
     }
 
     &.open {
-      > span {
+      > a {
         &:after {
           border-bottom: 0;
           border-top: 5px solid #95989A;
         }
       }
+
+      .sub-menu {
+        display: block;
+      }
     }
 
-    .option {
+    .menu-item {
       padding-left: 0;
 
       &:hover, &.open {
-        > span {
+        > a {
           &:before {
             background: #9FA8BA;
           }
@@ -97,7 +98,7 @@
         padding-bottom: 0;
       }
 
-      span {
+      a {
         padding-left: 18px;
         position: relative;
 
@@ -110,12 +111,6 @@
           top: calc(50% - 1px);
           background: #95989A;
         }
-      }
-    }
-
-    &.open {
-      > .option {
-        display: block;
       }
     }
   }

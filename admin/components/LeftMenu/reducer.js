@@ -7,19 +7,20 @@ const initialState = {
       items: [
         {
           name: 'Transaction',
-          link: '/admin/transaction',
+          link: '/admin/transactions',
           items: [
             {
               name: 'All',
-              link: '/admin/transaction',
+              indexRoute: true,
+              link: '/admin/transactions',
             },
             {
               name: 'Current',
-              link: '/admin/transaction/current',
+              link: '/admin/transactions/current',
             },
             {
               name: 'Historical',
-              link: '/admin/transaction/historical',
+              link: '/admin/transactions/historical',
             },
           ],
         },

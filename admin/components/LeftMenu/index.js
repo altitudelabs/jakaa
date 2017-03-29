@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import calssNames from 'classnames';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 import Header from './Header';
 import Menu from './Menu';
@@ -9,23 +9,36 @@ class LeftMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      select: -1,
+      selectedKey: -1,
     };
 
-    this.onSelect = this.onSelect.bind(this);
+    this.onSelected = this.onSelected.bind(this);
   }
 
-  onSelect(select) {
-    const selectState = this.state.select || -1;
-    if (selectState === select) {
-      this.setState({ select: -1 });
+  componentWillMount() {
+    let selectedKey = -1;
+    const { router, items } = this.props;
+
+    items.forEach((menu, index) => {
+      const menuItems = menu.items || [];
+      const filter = menuItems.filter(item => item.link && router.isActive(item.link))[0];
+      if (filter) selectedKey = index;
+    });
+
+    if (selectedKey > -1) this.setState({ selectedKey });
+  }
+
+  onSelected(selectedKey) {
+    const selectedKeyState = this.state.selectedKey || -1;
+    if (selectedKeyState === selectedKey) {
+      this.setState({ selectedKey: -1 });
     } else {
-      this.setState({ select });
+      this.setState({ selectedKey });
     }
   }
 
   renderItems() {
-    const { select } = this.state;
+    const { selectedKey } = this.state;
     const { items, router } = this.props;
 
     return (
@@ -35,20 +48,18 @@ class LeftMenu extends Component {
           index={key}
           item={item}
           router={router}
-          active={select === key}
-          onSelect={() => this.onSelect(key)}
+          active={selectedKey === key}
+          onSelected={() => this.onSelected(key)}
         />
       )
     );
   }
 
   render() {
-    const listClass = calssNames(
-      'left-menu' // TODO better prefix
-    );
+    const { className } = this.props;
 
     return (
-      <div className={listClass}>
+      <div className={classnames(className)}>
         <Header />
         {this.renderItems()}
       </div>
@@ -58,15 +69,18 @@ class LeftMenu extends Component {
 
 LeftMenu.defaultProps = {
   items: [],
+  className: 'left-menu',
 };
 
 LeftMenu.propTypes = {
   items: PropTypes.array,
+  className: PropTypes.string,
   router: React.PropTypes.object.isRequired,
 };
 
 const mapStatesToProps = (store) => {
-  return store.leftMenu;
+  const { items } = store.leftMenu;
+  return { items };
 };
 
 export default connect(mapStatesToProps, null)(LeftMenu);
