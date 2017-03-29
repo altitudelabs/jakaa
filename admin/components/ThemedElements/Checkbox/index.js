@@ -32,7 +32,7 @@ class Checkbox extends Component {
 
   get getClass() {
     const { className } = this.props;
-    return className;
+    return classNames('checkbox', className);
   }
 
   get getStyle() {
@@ -66,7 +66,6 @@ class Checkbox extends Component {
 
 Checkbox.defaultProps = {
   checked: false,
-  className: classNames('checkbox'),
 };
 
 Checkbox.propTypes = {
