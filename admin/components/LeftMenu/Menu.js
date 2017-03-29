@@ -1,121 +1,115 @@
 import React, { Component, PropTypes } from 'react';
+import { IndexLink, Link } from 'react-router';
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Menu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      paths: [],
-    };
-
-    this.onSelect = this.onSelect.bind(this);
-  }
-
-  onSelect(paths, path) {
-    const pathsState = this.state.paths || [];
-    const index = pathsState.indexOf(path);
-
-    if (index > -1) {
-      if (_.isEqual(pathsState, paths)) {
-        paths = [];
-      } else {
-        paths = [...pathsState.slice(0, index + 1)];
-      }
-    }
-
-    this.setState({ paths });
-    this.props.onSelect();
-    this.props.router.push(path);
-  }
-
   renderHeader(header) {
     if (!header) return;
-
-    const headerClass = classNames('header');
-    return <div key="header" className={headerClass}>{header}</div>;
-  }
-
-  renderName(item, paths) {
-    if (!item.name) return;
-    const { name, link } = item;
+    const { classNameHeader } = this.props;
 
     return (
-      <span
-        onClick={() => this.onSelect([...paths], link)}
-        key="name"
+      <div
+        key="header"
+        className={classNames(classNameHeader)}
       >
-        {name}
-      </span>
+        {header}
+      </div>
     );
   }
 
-  renderOption(item, key, paths) {
-    const { active } = this.props;
-    const pathsState = this.state.paths || [];
-    const menuClass = classNames('menu');
-    const className = classNames('option');
-    const { name, link, header, items } = item;
-    const atts = { key, className };
-    const dropdown = [];
-    const level = pathsState.length;
-    const index = pathsState.lastIndexOf(link);
-    let activeItem = false;
+  renderName(item, indexRoute) {
+    if (!item || !item.name) return;
 
-    if (index > -1) {
-      activeItem = true;
-      if (paths[level - 2] === link) {
-        activeItem = false;
-      }
-    }
-
-    if (header) {
-      dropdown.push(menuClass);
-    } else {
-      dropdown.push(className);
-      if (items && items.length > 0) {
-        dropdown.push('dropdown');
-      }
-    }
-
-    if (activeItem && active) dropdown.push('open');
-    atts.className = dropdown.join(' ');
-
-    const currentPaths = link === undefined ? [...paths] : [...paths, link];
+    const { name, link } = item;
+    const { onSelected, classNameActive } = this.props;
+    const LinkComponent = indexRoute ? IndexLink : Link;
 
     return (
-      <div {...atts}>
+      <LinkComponent
+        to={link}
+        key="name"
+        onClick={onSelected}
+        activeClassName={classNames(classNameActive)}
+      >
+        {name}
+      </LinkComponent>
+    );
+  }
+
+  renderMenuItem(item, key) {
+    const classes = [];
+    const { router, active, className, classNameItem } = this.props;
+
+    const { name, link, header, items, indexRoute } = item;
+    const activeItem = link && router.isActive(link);
+
+    if (header) {
+      classes.push(className);
+    } else {
+      classes.push(classNameItem);
+      if (items && items.length > 0) {
+        classes.push('dropdown');
+      }
+    }
+
+    if (active && activeItem && !indexRoute) classes.push('open');
+
+    return (
+      <div
+        key={key}
+        className={classNames(classes)}
+      >
         {
           [
             this.renderHeader(header),
-            this.renderName({ name, link }, currentPaths),
-            this.renderOptions(items, currentPaths),
+            this.renderName({ name, link }, indexRoute),
+            this.renderMenuItems(items, key),
           ]
         }
       </div>
     );
   }
 
-  renderOptions(items, paths) {
+  renderMenuItems(items, key) {
     if (!items) return;
-    return items.map((item, key) => this.renderOption(item, key, paths));
+    const { classNameSubMenu } = this.props;
+
+    return (
+      <div
+        key={key}
+        className={classNames(classNameSubMenu)}
+      >
+        {items.map((item, index) => this.renderMenuItem(item, index))}
+      </div>
+    );
   }
 
   render() {
     const { item } = this.props;
-    return this.renderOption(item, -1, []);
+    return this.renderMenuItem(item, -1);
   }
 }
 
 Menu.defaultProps = {
   item: {},
-  onSelect: () => {},
+  active: false,
+  onSelected: () => {},
+  className: 'menu',
+  classNameHeader: 'header',
+  classNameActive: 'active',
+  classNameItem: 'menu-item',
+  classNameSubMenu: 'sub-menu',
 };
 
 Menu.propTypes = {
   item: PropTypes.object,
   active: PropTypes.bool,
-  onSelect: PropTypes.func,
+  onSelected: PropTypes.func,
+  className: PropTypes.string,
+  classNameItem: PropTypes.string,
+  classNameHeader: PropTypes.string,
+  classNameActive: PropTypes.string,
+  classNameSubMenu: PropTypes.string,
   router: React.PropTypes.object.isRequired,
 };
 

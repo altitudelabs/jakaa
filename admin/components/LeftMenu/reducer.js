@@ -11,6 +11,7 @@ const initialState = {
           items: [
             {
               name: 'All',
+              indexRoute: true,
               link: '/admin/transactions',
             },
             {

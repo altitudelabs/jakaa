@@ -38,8 +38,10 @@ render(
         <IndexRoute component={Users} />
         <Route path={'users'} component={Users} />
         <Route path={'users/:id'} component={UserDetail} />
-        <Route path={'transactions'} component={Transactions} />
-        <Route path={'transactions/:id'} component={TransactionDetail} />
+        <Route path={'transactions'}>
+          <IndexRoute component={Transactions} />
+          <Route path={':id'} component={TransactionDetail} />
+        </Route>
       </Route>
     </Router>
   </Provider>,
