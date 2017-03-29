@@ -1,8 +1,8 @@
-import './style.scss';
-
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Checkbox from '../Checkbox';
+import _ from 'lodash';
+import './style.scss';
 
 class List extends Component {
   constructor(props) {
