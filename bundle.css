@@ -734,5 +734,35 @@ nav {
   .wish-list .product-list {
     padding-top: 25px;
     padding-bottom: 35px; }
+.FAQ {
+  padding: 25px;
+  color: #51585A; }
+  .FAQ > .title {
+    padding-top: 5px;
+    font-size: 33px;
+    line-height: 30px;
+    font-weight: bold; }
+  .FAQ .contact-us {
+    font-size: 18px; }
+    .FAQ .contact-us .link {
+      color: #D9B783; }
+  .FAQ .topic {
+    padding: 40px 0px; }
+    .FAQ .topic > .title {
+      font-weight: 500;
+      font-size: 18px; }
+  .FAQ .question-list {
+    padding-top: 15px;
+    padding-bottom: 10px; }
+    .FAQ .question-list > li .question {
+      padding-top: 45px; }
+    .FAQ .question-list > li:first-child .question {
+      padding-top: 0px; }
+  .FAQ .question {
+    font-size: 16px; }
+    .FAQ .question h4 {
+      font-weight: normal; }
+    .FAQ .question .answer {
+      padding-top: 5px; }
 
 /*# sourceMappingURL=bundle.css.map*/

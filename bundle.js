@@ -24090,6 +24090,10 @@
 	
 	var _WishList2 = _interopRequireDefault(_WishList);
 	
+	var _FAQ = __webpack_require__(721);
+	
+	var _FAQ2 = _interopRequireDefault(_FAQ);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Needed for onTouchTap
@@ -24127,6 +24131,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: 'product/:id', component: _Product.Detail }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'profile/:id', component: _Profile2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'wishlist', component: _WishList2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'FAQ', component: _FAQ2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Home2.default })
 	    )
 	  )
@@ -53016,6 +53021,9 @@
 	      {
 	        href: '/product/new',
 	        label: 'new product'
+	      }, {
+	        href: '/faq',
+	        label: 'faq'
 	      }];
 	
 	      // TODO may be able to optimize height calc like flipkart on touchmove
@@ -74415,6 +74423,324 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 720 */,
+/* 721 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	__webpack_require__(722);
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(338);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _whyDidYouUpdate = __webpack_require__(436);
+	
+	var _Touch = __webpack_require__(339);
+	
+	var _Touch2 = _interopRequireDefault(_Touch);
+	
+	var _reactRouter = __webpack_require__(240);
+	
+	var _Topics = __webpack_require__(724);
+	
+	var _Topics2 = _interopRequireDefault(_Topics);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var FAQ = function (_Component) {
+	  _inherits(FAQ, _Component);
+	
+	  function FAQ(props) {
+	    _classCallCheck(this, FAQ);
+	
+	    var _this = _possibleConstructorReturn(this, (FAQ.__proto__ || Object.getPrototypeOf(FAQ)).call(this, props));
+	
+	    _this.state = {};
+	    return _this;
+	  }
+	
+	  _createClass(FAQ, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: (0, _classnames2.default)('FAQ') },
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'title' },
+	          'Freqently asked questions'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'contact-us' },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            'Can’t find it here? ',
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/contact-us', className: 'link' },
+	              'Contact us'
+	            ),
+	            ', we are here to help you.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          null,
+	          _react2.default.createElement(_Topics2.default, {
+	            topics: [{
+	              title: 'account & profile',
+	              questions: [{
+	                question: 'how do i create a profile?',
+	                answer: 'Take your ideas to the next level and make something that people use everyday. Something that changes the physical world and does it fast. We still have a long way to go. Hop in and help us get there.'
+	              }, {
+	                question: 'how do i create a profile?',
+	                answer: 'Take your ideas to the next level and make something that people use everyday. Something that changes the physical world and does it fast. We still have a long way to go. Hop in and help us get there.'
+	              }]
+	            }, {
+	              title: 'renting out items',
+	              questions: [{
+	                question: 'how do i create a listing?',
+	                answer: 'Take your ideas to the next level and make something that people use everyday. Something that changes the physical world—and does it fast. We still have a long way to go. Hop in and help us get there.'
+	              }, {
+	                question: 'how do i create a profile?',
+	                answer: 'Take your ideas to the next level and make something that people use everyday. Something that changes the physical world and does it fast. We still have a long way to go. Hop in and help us get there.'
+	              }]
+	            }]
+	          })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return FAQ;
+	}(_react.Component);
+	
+	FAQ.defaultProps = {};
+	
+	FAQ.propTypes = {
+	  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
+	  open: _react.PropTypes.bool
+	};
+	
+	exports.default = (0, _whyDidYouUpdate.whyDidYouUpdateWrapper)(FAQ);
+
+/***/ },
+/* 722 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 723 */,
+/* 724 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Divider = __webpack_require__(387);
+	
+	var _Divider2 = _interopRequireDefault(_Divider);
+	
+	var _Topic = __webpack_require__(725);
+	
+	var _Topic2 = _interopRequireDefault(_Topic);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Topics = function Topics(props) {
+	  var topics = props.topics;
+	
+	
+	  return _react2.default.createElement(
+	    'ul',
+	    { className: 'topic-list' },
+	    topics.map(function (topic, i) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: i },
+	        i > 0 ? _react2.default.createElement(_Divider2.default, { verticalMargin: 0 }) : null,
+	        _react2.default.createElement(_Topic2.default, { topic: topic })
+	      );
+	    })
+	  );
+	};
+	
+	Topics.defaultProps = {
+	  topics: []
+	};
+	
+	Topics.propTypes = {
+	  topics: _react.PropTypes.array
+	};
+	
+	exports.default = Topics;
+
+/***/ },
+/* 725 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Questions = __webpack_require__(726);
+	
+	var _Questions2 = _interopRequireDefault(_Questions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Topic = function Topic(props) {
+	  var topic = props.topic;
+	
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'topic' },
+	    _react2.default.createElement(
+	      'h2',
+	      { className: 'title' },
+	      topic.title
+	    ),
+	    _react2.default.createElement(_Questions2.default, { questions: topic.questions })
+	  );
+	};
+	
+	Topic.defaultProps = {};
+	
+	Topic.propTypes = {
+	  topic: _react.PropTypes.object
+	};
+	
+	exports.default = Topic;
+
+/***/ },
+/* 726 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Question = __webpack_require__(727);
+	
+	var _Question2 = _interopRequireDefault(_Question);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Questions = function Questions(props) {
+	  var questions = props.questions;
+	
+	
+	  return _react2.default.createElement(
+	    'ul',
+	    { className: 'question-list' },
+	    questions.map(function (question, i) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: i },
+	        _react2.default.createElement(_Question2.default, { question: question })
+	      );
+	    })
+	  );
+	};
+	
+	Questions.defaultProps = {};
+	
+	Questions.propTypes = {
+	  questions: _react.PropTypes.array
+	};
+	
+	exports.default = Questions;
+
+/***/ },
+/* 727 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(64);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Question = function Question(props) {
+	  var question = props.question;
+	
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'question' },
+	    _react2.default.createElement(
+	      'h4',
+	      null,
+	      question.question
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'answer' },
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        question.answer
+	      )
+	    )
+	  );
+	};
+	
+	Question.defaultProps = {};
+	
+	Question.propTypes = {
+	  question: _react.PropTypes.object
+	};
+	
+	exports.default = Question;
 
 /***/ }
 /******/ ]);
