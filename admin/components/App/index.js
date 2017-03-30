@@ -1,30 +1,16 @@
 import React, { PropTypes } from 'react';
 import LeftMenu from '../LeftMenu';
 import Nav from '../Nav';
-import List from '../List';
 import ThemeProvider from '../../composeComponents/Theme';
 import constants from '../../constants';
 
-const App = () => {
+const App = ({ children, router, route }) => {
   return (
     <ThemeProvider constants={constants}>
-      <LeftMenu />
+      <LeftMenu router={router} />
       <Nav />
       <div className={'main-container'}>
-        <List
-          items={[
-            {
-              contactName: 'A tothe B tothe C tothe D tothe E tothe F tothe G',
-              name: 'Varun',
-              age: 1,
-            },
-            {
-              contactName: 'Leon',
-              name: 'Kathleen',
-              age: 1,
-            },
-          ]}
-        />
+        {React.cloneElement(children, { router, route })}
       </div>
     </ThemeProvider>
   );
@@ -38,6 +24,8 @@ App.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  route: React.PropTypes.object.isRequired,
+  router: React.PropTypes.object.isRequired,
 };
 
 export default App;

@@ -23,3 +23,10 @@ $main-container-min-width: 500px;
     clear: both;
   }
 }
+
+@mixin transition($transition...) {
+  transition: $transition;
+  -o-transition: $transition;
+  -moz-transition: $transition;
+  -webkit-transition: $transition;
+}

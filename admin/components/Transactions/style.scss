@@ -1,0 +1,59 @@
+.transactions {
+  > .header {
+    display: flex;
+    margin-bottom: 22px;
+
+    .left {
+      flex: 1;
+      display: flex;
+
+      > .searchbox {
+        position: relative;
+        margin-right: 35px;
+
+        &:after {
+          content: ' ';
+          width: 1px;
+          right: -25px;
+          height: 100%;
+          position: absolute;
+          background-color: #C4C4C4;
+        }
+      }
+
+      .group {
+        display: flex;
+
+        > button {
+          margin: 0 10px;
+          color: #95989A;
+          border: 1px solid #D3D3D3;
+          background-color: #FFFFFF;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+
+      > button {
+        margin-left: 10px;
+      }
+
+      .add {
+        background-color: #53C429;
+      }
+    }
+  }
+
+  .list-table {
+    .item {
+      min-width: 90px;
+      max-width: 350px;
+
+      &:first-child {
+        min-width: initial;
+      }
+    }
+  }
+}
