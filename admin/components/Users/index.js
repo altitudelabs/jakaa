@@ -23,7 +23,7 @@ class Users extends Component {
     super(props);
     this.state = {
       page: 0,
-      selected: {},
+      selectedKey: {},
       searchText: '',
     };
 
@@ -92,17 +92,17 @@ class Users extends Component {
       getUsers({ page });
     }
 
-    this.setState({ selected: {}, page, searchText });
+    this.setState({ selectedKey: {}, page, searchText });
     this.props.router.replace({ pathname, query });
   }
 
   onSelectUser(key, items) {
-    const selected = items.reduce((obj, item) => {
+    const selectedKey = items.reduce((obj, item) => {
       obj[item.id] = true;
       return obj;
     }, {});
 
-    this.setState({ selected });
+    this.setState({ selectedKey });
 
     if (key !== 'id' && items.length === 1) {
       this.props.router.push(`/admin/users/${items[0].id}`);
@@ -123,8 +123,8 @@ class Users extends Component {
   }
 
   renderSideTop() {
-    const { selected, searchText } = this.state;
-    const displayDelete = Object.keys(selected).length > 0;
+    const { selectedKey, searchText } = this.state;
+    const displayDelete = Object.keys(selectedKey).length > 0;
 
     return (
       <div className={classNames('header')}>
@@ -155,7 +155,7 @@ class Users extends Component {
   }
 
   render() {
-    const { page, selected } = this.state;
+    const { page, selectedKey } = this.state;
     const { users, userCount, limit } = this.props;
     const pageCount = userCount / limit + (userCount % limit > 0 ? 1 : 0);
 
@@ -163,7 +163,7 @@ class Users extends Component {
       <div className={classNames('users')}>
         {this.renderSideTop()}
         <List
-          selected={selected}
+          selectedKey={selectedKey}
           dataSource={shortFormat(users)}
           itemConfig={this.getItemConfig}
           onSelectChange={this.onSelectUser}

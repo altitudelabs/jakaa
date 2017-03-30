@@ -26,7 +26,7 @@ class Transactions extends Component {
     super(props);
     this.state = {
       page: 0,
-      selected: {},
+      selectedKey: {},
       searchText: '',
     };
 
@@ -89,17 +89,17 @@ class Transactions extends Component {
       getTransactions({ page });
     }
 
-    this.setState({ selected: {}, page, searchText });
+    this.setState({ selectedKey: {}, page, searchText });
     this.props.router.replace({ pathname, query });
   }
 
   onSelectTransaction(key, items) {
-    const selected = items.reduce((obj, item) => {
+    const selectedKey = items.reduce((obj, item) => {
       obj[item.id] = true;
       return obj;
     }, {});
 
-    this.setState({ selected });
+    this.setState({ selectedKey });
 
     if (key !== 'id' && items.length === 1) {
       this.props.router.push(`/admin/transactions/${items[0].id}`);
@@ -120,8 +120,8 @@ class Transactions extends Component {
   }
 
   renderSideTop() {
-    const { selected, searchText } = this.state;
-    const displayDelete = Object.keys(selected).length > 0;
+    const { selectedKey, searchText } = this.state;
+    const displayDelete = Object.keys(selectedKey).length > 0;
 
     return (
       <div className={classNames('header')}>
@@ -150,7 +150,7 @@ class Transactions extends Component {
   }
 
   render() {
-    const { page, selected } = this.state;
+    const { page, selectedKey } = this.state;
     const { transactions, transactionCount, limit } = this.props;
     const pageCount = transactionCount / limit + (transactionCount % limit > 0 ? 1 : 0);
 
@@ -158,7 +158,7 @@ class Transactions extends Component {
       <div className={classNames('transactions')}>
         {this.renderSideTop()}
         <List
-          selected={selected}
+          selectedKey={selectedKey}
           dataSource={shortFormats(transactions)}
           itemConfig={this.getItemConfig}
           onSelectChange={this.onSelectTransaction}
