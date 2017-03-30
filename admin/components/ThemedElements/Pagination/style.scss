@@ -1,0 +1,101 @@
+$pagination-background-color: #F7F7F7;
+$stroke-color: #CECECE;
+$item-active: #407BFF;
+$white: #FFFFFF;
+$item-hover: #F4F4F4;
+$disabled-color: #C3C3C3;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  background-color: $pagination-background-color;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid $stroke-color;
+  border-top: none;
+  padding: 20px 19px;
+
+  input {
+    width: 40px;
+    outline: none;
+    text-align: right;
+    margin-left: 10px;
+    padding: 4.5px 5px;
+    border-radius: 5px;
+    margin-right: 30px;
+    border: 1px solid $stroke-color;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+
+  .group {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &.form-group {
+      flex: inherit;
+
+      @media (min-width: 768px) {
+        min-width: 230px;
+      }
+    }
+  }
+
+  .item {
+    height: 23px;
+    display: flex;
+    color: $white;
+    outline: none;
+    font-size: 12px;
+    min-width: 23px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 4px;
+    user-select: none;
+    padding-left: 6px;
+    margin-right: 4px;
+    padding-right: 6px;
+    border-radius: 3px;
+    color: $item-active;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    border: .5px solid $stroke-color;
+
+    &.selected {
+      border: none;
+      color: $white;
+      background-color: $item-active;
+
+      &:hover {
+        background-color: $item-active;
+      }
+
+    }
+
+    &:hover {
+      background-color: $item-hover;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      color: $disabled-color;
+    }
+  }
+
+  .break {
+    height: 25px;
+    display: flex;
+    outline: none;
+    user-select: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    align-items: flex-end;
+  }
+}

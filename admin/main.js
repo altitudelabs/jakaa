@@ -16,6 +16,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from './service/store';
 
 import App from './components/App';
+import Users from './components/Users';
+import UserDetail from './components/UserDetail';
+
+import Transactions from './components/Transactions';
+
 // Needed for onTouchTap
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
@@ -29,8 +34,11 @@ render(
   <Provider store={store}>
     {/* Tell the Router to use our enhanced history */}
     <Router history={history}>
-      <Route path={'/admin'}>
-        <IndexRoute component={App} />
+      <Route path={'/admin'} component={App}>
+        <IndexRoute component={Users} />
+        <Route path={'users'} component={Users} />
+        <Route path={'users/:id'} component={UserDetail} />
+        <Route path={'transactions'} component={Transactions} />
       </Route>
     </Router>
   </Provider>,
