@@ -9,6 +9,9 @@
   left: 0;
   width: $left-menu-width;
   background-color: $left-menu-background-color;
+  user-select: none;
+  overflow-y: scroll;
+
   & > .header {
     padding: 0px $horizontal-padding;
     height: $header-height;
@@ -27,12 +30,87 @@
       font-weight: bold;
       text-transform: uppercase;
     }
-    .option {
+
+    .menu-item {
       padding: 9px $horizontal-padding;
       cursor: pointer;
-      &:hover, &.open {
+
+      &:hover, &.open, > .active, > .active + .sub-menu {
         background-color: #475065;
         color: #ffffff;
+      }
+
+      a {
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .dropdown {
+    .sub-menu {
+      display: none;
+    }
+
+    > a {
+      position: relative;
+
+      &:after {
+        right: 0;
+        width: 0;
+        height: 0;
+        content: ' ';
+        top: calc(50% - 2px);
+        position: absolute;
+        border-top: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #95989A;
+      }
+    }
+
+    &.open {
+      > a {
+        &:after {
+          border-bottom: 0;
+          border-top: 5px solid #95989A;
+        }
+      }
+
+      .sub-menu {
+        display: block;
+      }
+    }
+
+    .menu-item {
+      padding-left: 0;
+
+      &:hover, &.open {
+        > a {
+          &:before {
+            background: #9FA8BA;
+          }
+        }
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      a {
+        padding-left: 18px;
+        position: relative;
+
+        &:before {
+          left: 0;
+          width: 12px;
+          height: 1px;
+          content: ' ';
+          position: absolute;
+          top: calc(50% - 1px);
+          background: #95989A;
+        }
       }
     }
   }

@@ -27,7 +27,7 @@ module.exports = {
         ),
       },
       {
-        test: /([\w\-\/]+\.(?:eot|woff|ttf|otf|ico|jpeg|png|jpg))/,
+        test: /([\w\-\/]+\.(?:eot|woff|ttf|otf|ico|jpeg|png|jpg|svg))/,
         loader: 'file?name=[name].[ext]',
       },
     ],
