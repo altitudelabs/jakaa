@@ -66,6 +66,10 @@ class LeftMenu extends Component {
         href: '/product/new',
         label: 'new product',
       },
+      {
+        href: '/faq',
+        label: 'faq',
+      },
     ];
 
     // TODO may be able to optimize height calc like flipkart on touchmove
