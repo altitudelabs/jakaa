@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Checkbox from '../Checkbox';
+import Moment from 'moment';
 import _ from 'lodash';
 import './style.scss';
 
@@ -9,7 +10,7 @@ class List extends Component {
     super(props);
     this.state = {
       sort: {},
-      selected: {},
+      selectedKey: {},
       dataSource: [],
     };
 
@@ -31,8 +32,8 @@ class List extends Component {
       this.setState({ dataSource });
     }
 
-    if (props.selected !== this.state.selected) {
-      this.setState({ selected: props.selected });
+    if (props.selectedKey !== this.state.selectedKey) {
+      this.setState({ selectedKey: props.selectedKey });
     }
   }
 
@@ -40,7 +41,7 @@ class List extends Component {
     let ids = {};
     let items = [];
     const { onSelectChange } = this.props;
-    const { dataSource, selected } = this.state;
+    const { dataSource, selectedKey } = this.state;
 
     if (all) {
       if (checked) {
@@ -51,12 +52,12 @@ class List extends Component {
         }, {});
       }
     } else {
-      ids = { ...selected, [item.id]: checked };
+      ids = { ...selectedKey, [item.id]: checked };
       if (!checked) delete ids[item.id];
       items = dataSource.filter(_item => ids[_item.id]);
     }
 
-    this.setState({ selected: ids });
+    this.setState({ selectedKey: ids });
     if (onSelectChange) onSelectChange(key, items, all);
   }
 
@@ -68,7 +69,8 @@ class List extends Component {
   }
 
   get classRoot() {
-    return classNames('list-table');
+    const { className } = this.props;
+    return classNames('list-table', className);
   }
 
   sortDataSource(items, sort) {
@@ -77,8 +79,8 @@ class List extends Component {
     if (!key) return items;
     return items.sort((a, b) => {
       if (data.date) {
-        a = { ...a, [key]: new Date(a[key]) };
-        b = { ...b, [key]: new Date(b[key]) };
+        a = { ...a, [key]: Moment(a[key]) };
+        b = { ...b, [key]: Moment(b[key]) };
       }
 
       const [first, second] = descending ? [a, b] : [b, a];
@@ -109,8 +111,8 @@ class List extends Component {
       config.visible || config.checkbox || config.visible === undefined
     );
 
-    const { selected, dataSource } = this.state;
-    const all = Object.keys(selected).length === dataSource.length && dataSource.length !== 0;
+    const { selectedKey, dataSource } = this.state;
+    const all = Object.keys(selectedKey).length === dataSource.length && dataSource.length !== 0;
 
     return (
       <div className="row header" key="header">
@@ -141,10 +143,10 @@ class List extends Component {
   }
 
   renderRow(item, index, ...arg) {
-    const { selected } = this.state;
+    const { selectedKey } = this.state;
     const { renderRow, itemClick } = this.props;
     const classes = ['row'];
-    if (selected[item.id]) classes.push('selected');
+    if (selectedKey[item.id]) classes.push('selectedKey');
 
     if (renderRow) return renderRow(item, ...arg);
     const visibles = this.getItemConfig.filter(config =>
@@ -158,19 +160,22 @@ class List extends Component {
         className={classNames(classes.join(' '))}
       >
         {visibles.map((config, itemIndex) => {
-          const { key, visible, checkbox } = config;
-          const visibleText = (visible || visible === undefined) && item[key];
+          const { key, visible, prefix, nextfix, checkbox, format = 'DD/MMM/YYYY', date } = config;
+          let visibleText = (visible || visible === undefined) && item[key];
+          if (date) visibleText = Moment(visibleText).format(format);
+          if (prefix) visibleText = `${prefix} ${visibleText}`;
+          if (nextfix) visibleText = `${visibleText} ${nextfix}`;
 
           return (
             <div
               className="item"
               key={itemIndex}
-              onClick={() => this.onSelect(key, !selected[item.id], item)}
+              onClick={() => this.onSelect(key, !selectedKey[item.id], item)}
             >
               {visibleText}
               {checkbox && (
                 <Checkbox
-                  checked={selected[item.id]}
+                  checked={selectedKey[item.id]}
                 />
               )}
             </div>
@@ -198,7 +203,7 @@ class List extends Component {
 }
 
 List.defaultProps = {
-  selected: {},
+  selectedKey: {},
   dataSource: [],
   itemClick: () => {},
 };
@@ -209,6 +214,8 @@ List.propTypes = {
   onSort: PropTypes.func,
   itemClick: PropTypes.func,
   renderRow: PropTypes.func,
+  className: PropTypes.string,
+  selectedKey: PropTypes.object,
   renderHeader: PropTypes.func,
   onSelectChange: PropTypes.func,
 };
