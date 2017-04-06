@@ -3,11 +3,10 @@ import LeftMenu from '../LeftMenu';
 import Nav from '../Nav';
 import List from '../List';
 import ThemeProvider from '../../composeComponents/Theme';
-import constants from '../../constants';
 
 const App = () => {
   return (
-    <ThemeProvider constants={constants}>
+    <ThemeProvider>
       <LeftMenu />
       <Nav />
       <div className={'main-container'}>
@@ -28,9 +27,6 @@ const App = () => {
       </div>
     </ThemeProvider>
   );
-};
-
-App.defaultProps = {
 };
 
 App.propTypes = {

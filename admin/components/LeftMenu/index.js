@@ -1,29 +1,46 @@
-import './style.scss';
-
-import React from 'react';
-import calssNames from 'classnames';
+import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
+import { connect } from 'react-redux';
 import Header from './Header';
 import Menu from './Menu';
+import './style.scss';
 
-const LeftMenu = () => {
-  const listClass = calssNames(
-    'left-menu' // TODO better prefix
-  );
+class LeftMenu extends Component {
+  renderItems() {
+    return (
+      this.props.items.map((item, key) =>
+        <Menu
+          key={key}
+          item={item}
+        />
+      )
+    );
+  }
 
-  return (
-    <div className={listClass}>
-      <Header />
-      <Menu />
-      <Menu />
-    </div>
-  );
-};
+  render() {
+    const { className } = this.props;
+
+    return (
+      <div className={classnames('left-menu', className)}>
+        <Header />
+        {this.renderItems()}
+      </div>
+    );
+  }
+}
 
 LeftMenu.defaultProps = {
+  items: [],
 };
 
 LeftMenu.propTypes = {
+  items: PropTypes.array,
+  className: PropTypes.string,
 };
 
+const mapStatesToProps = (store) => {
+  const { items } = store.leftMenu;
+  return { items };
+};
 
-export default LeftMenu;
+export default connect(mapStatesToProps, null)(LeftMenu);
