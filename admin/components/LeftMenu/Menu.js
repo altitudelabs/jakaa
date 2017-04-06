@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { IndexLink, Link } from 'react-router';
+import { IndexLink, Link, withRouter } from 'react-router';
 import classNames from 'classnames';
 
 class Menu extends Component {
@@ -10,7 +10,7 @@ class Menu extends Component {
     return (
       <div
         key="header"
-        className={classNames(classNameHeader)}
+        className={classNames('header', classNameHeader)}
       >
         {header}
       </div>
@@ -21,15 +21,14 @@ class Menu extends Component {
     if (!item || !item.name) return;
 
     const { name, link } = item;
-    const { onSelected, classNameActive } = this.props;
+    const { classNameActive } = this.props;
     const LinkComponent = indexRoute ? IndexLink : Link;
 
     return (
       <LinkComponent
         to={link}
-        key="name"
-        onClick={onSelected}
-        activeClassName={classNames(classNameActive)}
+        key="menu-name"
+        activeClassName={classNames('active', classNameActive)}
       >
         {name}
       </LinkComponent>
@@ -37,27 +36,21 @@ class Menu extends Component {
   }
 
   renderMenuItem(item, key) {
-    const classes = [];
-    const { router, active, className, classNameItem } = this.props;
-
+    const { router, className, classNameItem } = this.props;
     const { name, link, header, items, indexRoute } = item;
     const activeItem = link && router.isActive(link);
-
-    if (header) {
-      classes.push(className);
-    } else {
-      classes.push(classNameItem);
-      if (items && items.length > 0) {
-        classes.push('dropdown');
-      }
-    }
-
-    if (active && activeItem && !indexRoute) classes.push('open');
 
     return (
       <div
         key={key}
-        className={classNames(classes)}
+        className={classNames({
+          menu: header,
+          [className]: header,
+          'menu-item': !header,
+          [classNameItem]: !header,
+          open: activeItem && !indexRoute,
+          dropdown: !header && items && items.length > 0,
+        })}
       >
         {
           [
@@ -77,7 +70,7 @@ class Menu extends Component {
     return (
       <div
         key={key}
-        className={classNames(classNameSubMenu)}
+        className={classNames('sub-menu', classNameSubMenu)}
       >
         {items.map((item, index) => this.renderMenuItem(item, index))}
       </div>
@@ -92,19 +85,10 @@ class Menu extends Component {
 
 Menu.defaultProps = {
   item: {},
-  active: false,
-  onSelected: () => {},
-  className: 'menu',
-  classNameHeader: 'header',
-  classNameActive: 'active',
-  classNameItem: 'menu-item',
-  classNameSubMenu: 'sub-menu',
 };
 
 Menu.propTypes = {
   item: PropTypes.object,
-  active: PropTypes.bool,
-  onSelected: PropTypes.func,
   className: PropTypes.string,
   classNameItem: PropTypes.string,
   classNameHeader: PropTypes.string,
@@ -113,4 +97,4 @@ Menu.propTypes = {
   router: React.PropTypes.object.isRequired,
 };
 
-export default Menu;
+export default withRouter(Menu);
