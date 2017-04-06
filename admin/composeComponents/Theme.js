@@ -1,10 +1,6 @@
 import React, { PropTypes } from 'react';
 
 const ConstantsProvider = (props) => {
-  const {
-    constants,
-  } = props;
-
   const childrenWithProps = React.Children.map(
     props.children,
     (child) => {
@@ -12,23 +8,15 @@ const ConstantsProvider = (props) => {
         return child;
       }
 
-      return React.cloneElement(child, {
-        constants,
-      });
+      return React.cloneElement(child);
     }
   );
 
   return <div>{childrenWithProps}</div>;
 };
 
-ConstantsProvider.defaultProps = {
-  constants: {},
-};
-
 ConstantsProvider.propTypes = {
   children: PropTypes.node,
-  constants: PropTypes.object,
 };
-
 
 export default ConstantsProvider;

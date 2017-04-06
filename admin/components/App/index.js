@@ -3,12 +3,11 @@ import LeftMenu from '../LeftMenu';
 import Nav from '../Nav';
 import List from '../List';
 import ThemeProvider from '../../composeComponents/Theme';
-import constants from '../../constants';
 
-const App = ({ router }) => {
+const App = () => {
   return (
-    <ThemeProvider constants={constants}>
-      <LeftMenu router={router} />
+    <ThemeProvider>
+      <LeftMenu />
       <Nav />
       <div className={'main-container'}>
         <List
@@ -30,15 +29,11 @@ const App = ({ router }) => {
   );
 };
 
-App.defaultProps = {
-};
-
 App.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  router: React.PropTypes.object.isRequired,
 };
 
 export default App;
