@@ -3,6 +3,7 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const restify = require('../../service/restify');
+const Gandalf = require('../../service/gandalf');
 
 module.exports = {
   load: (sequelize) => {
@@ -19,23 +20,27 @@ module.exports = {
     });
   },
   postLoad: () => {
+    const userLevelAuthMiddlewares = _.map(['update', 'getAll', 'getSingle'], (route) => {
+      return {
+        stage: 'pre',
+        target: route,
+        action: Gandalf.expressMW(['user', 'admin']),
+      };
+    });
     restify.register(
       PG.User,
       {
         include: [
-          'create',
           'update',
           'getAll',
           'getSingle',
           'delete',
         ],
-        middlewares: [
+        middlewares: [...userLevelAuthMiddlewares,
           {
-            stage: 'validate',
-            target: ['create', 'update', 'getAll', 'getSingle', 'delete'],
-            action: (req, res, next) => {
-              res.send('Done');
-            },
+            stage: 'pre',
+            target: 'delete',
+            action: Gandalf.expressMW(['admin']),
           },
         ],
       }

@@ -1,15 +1,16 @@
 'use strict';
 
 const Sequelize = require('sequelize');
+const DataTypes = Sequelize.DataTypes;
 const restify = require('../../service/restify');
 
 module.exports = {
   load: (sequelize) => {
     PG.Review = sequelize.define('review', {
-      password: { type: Sequelize.STRING, allowNull: false },
-      email: { type: Sequelize.STRING, allowNull: false },
-      firstName: { type: Sequelize.STRING },
-      lastName: { type: Sequelize.STRING },
+      password: { type: DataTypes.STRING, allowNull: false },
+      email: { type: DataTypes.STRING, allowNull: false },
+      firstName: { type: DataTypes.STRING },
+      lastName: { type: DataTypes.STRING },
     });
   },
   postLoad: () => {
