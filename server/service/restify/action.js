@@ -48,8 +48,8 @@ module.exports = {
   },
   delete: (model) => {
     return (req, res, next) => {
-      model.delete(req.param.id)
-        .then(() => {
+      model.destroy({ where: { id: req.params.id } })
+        .then((result) => {
           res.send('success');
         })
         .catch((e) => next(e));

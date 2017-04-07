@@ -80,6 +80,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "uuid": "^2.0.3",
+    "validator": "^7.0.0",
     "warning": "^3.0.0",
     "watchify": "^3.9.0",
     "webpack": "^1.14.0"
