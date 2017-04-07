@@ -29,13 +29,21 @@ module.exports = {
           'getSingle',
           'delete',
         ],
+        middlewares: [
+          {
+            stage: 'validate',
+            target: ['create', 'update', 'getAll', 'getSingle', 'delete'],
+            action: (req, res, next) => {
+              res.send('Done');
+            },
+          },
+        ],
       }
     );
   },
   relate: () => {
   },
 };
-
 
 
 function breakCircular(obj) {
