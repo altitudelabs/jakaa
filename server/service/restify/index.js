@@ -56,16 +56,16 @@ class Restify {
     if (!_.isString(mw.target)) { throw new Error('Restify middleware target has to be String.'); }
     if (!_.includes(validTargets, mw.target)) { throw new Error(`Invalide target. enum ${validTargets}.`); }
 
-    if (!_.isFunction(mw.action)) { throw new Error('Restify action has to be fnction.'); }
+    if (!_.isFunction(mw.action)) { throw new Error('Restify action has to be function.'); }
   }
 
   register(model, opts) {
     model.operations = opts.include || ['create', 'update', 'getAll', 'getSingle', 'delete'];
+    const modelName = model.name;
     this.models.push(model);
-
     opts.middlewares = opts.middlewares || [];
     opts.middlewares.forEach(this.validateMiddleware);
-    this.middlewares = opts.middlewares;
+    this.middlewares = _.union(opts.middlewares.map((mw) => { return { model: modelName, mw }; }), this.middlewares);
   }
 
   registerRoutes() {
@@ -75,9 +75,15 @@ class Restify {
       const restRouter = express.Router();
 
       _.forEach(model.operations, (taskName) => {
-        const mwRouter = express.Router();
-
-        const middlewares = this.middlewares.filter(mw => mw.target === taskName);
+        const mwRouter = express.Router({
+          mergeParams: true,
+        });
+        const mwForThisModel = this.middlewares.filter((mwObj) => {
+          return mwObj.model === model.name;
+        });
+        const middlewares = mwForThisModel.map((mw) => {
+          return mw.mw;
+        });
         const validateMiddlewares = middlewares.filter(mw => mw.stage === 'validate');
         const preMiddlewares = middlewares.filter(mw => mw.stage === 'pre');
         const actionMiddlewares = middlewares.filter(mw => mw.stage === 'action');
