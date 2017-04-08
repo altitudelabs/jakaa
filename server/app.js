@@ -22,13 +22,14 @@ require('./config/global')();
 require('./config/promise')();
 require('./config/mongoose')();
 require('./config/aws')();
+require('./config/express')(app);
+require('./auth')(app); // auth
 
 require('./config/postgress')()
   .then(() => {
     configExpress(app);
     configRoutes(app);
     configApi(app);
-
     restify.serve(app);
 
     app.use((req, res) => {
