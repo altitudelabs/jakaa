@@ -4,7 +4,10 @@
   "description": "jakaa app",
   "main": "index.js",
   "scripts": {
+    "find-nvm": "echo $NVM_DIR && nvm current",
+    "nvm": "source $HOME/.nvm/nvm.sh && nvm use",
     "start": "nodemon server/app.js",
+    "prestart": "npm run nvm",
     "deploy-gh": "webpack --config webpack.gh.config.js && node ./gh-pages/deploy",
     "build": "webpack-dev-server --config webpack.config.js --inline",
     "build-prod": "NODE_ENV=production webpack",
