@@ -16,6 +16,7 @@ module.exports = (sequelize) => {
   const models = fs.readdirSync(path.join(__dirname, '../api'))
   .filter(file => file.indexOf('.') === -1 && !_.includes(noModelAPIFolders, file)) // extension does not exist -> it's a folder)
   .map(folder => require(path.join(__dirname, '../api', folder)).model); // eslint-disable-line global-require
+
   models.forEach(model => {
     model.load(sequelize);
     model.postLoad();

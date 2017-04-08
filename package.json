@@ -4,8 +4,6 @@
   "description": "jakaa app",
   "main": "index.js",
   "scripts": {
-    "find-nvm": "echo $NVM_DIR && nvm current",
-    "nvm": "source $HOME/.nvm/nvm.sh && nvm use",
     "start": "nodemon server/app.js",
     "prestart": "npm run nvm",
     "deploy-gh": "webpack --config webpack.gh.config.js && node ./gh-pages/deploy",
@@ -13,7 +11,8 @@
     "build-prod": "NODE_ENV=production webpack",
     "build-admin": "webpack-dev-server --inline --config webpack.admin.config.js --port 8081",
     "build-admin-prod": "webpack --config webpack.admin.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./server/**/*.spec.js --reporter spec",
+    "test:watch": "nodemon --watch ./server -e js -x \"npm run test\""
   },
   "engines": {
     "node": "^6.3.0",
