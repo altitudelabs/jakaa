@@ -36,6 +36,11 @@ module.exports = () => {
     .then(() => {
       console.log('all pg sync complete');
     })
+    .then(() => {
+      if (config.env === 'development') {
+        require('../service/seed.js')(sequelize); // eslint-disable-line global-require
+      }
+    })
     .catch((e) => {
       console.log('there was a problem with syncing pg');
       console.log(e);
