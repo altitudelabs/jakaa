@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/app.js",
-    "prestart": "npm run nvm",
     "deploy-gh": "webpack --config webpack.gh.config.js && node ./gh-pages/deploy",
     "build": "webpack-dev-server --config webpack.config.js --inline",
     "build-prod": "NODE_ENV=production webpack",
@@ -80,6 +79,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "uuid": "^2.0.3",
+    "validator": "^7.0.0",
     "warning": "^3.0.0",
     "watchify": "^3.9.0",
     "webpack": "^1.14.0"
