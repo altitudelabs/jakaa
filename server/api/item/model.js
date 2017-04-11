@@ -5,6 +5,7 @@ const DataTypes = Sequelize.DataTypes;
 const restify = require('../../service/restify');
 const Gandalf = require('../../service/gandalf');
 const _ = require('lodash');
+const moment = require('moment');
 const validator = require('validator');
 
 module.exports = {
@@ -51,15 +52,34 @@ module.exports = {
         validate: {
           min: function (value) {
             if (value <= this.minRentingPeriod) {
-              throw new Error(`Your maximimum renting perdiod has to be atleast ${parseInt(this.minRentingPeriod, 10) + 1}`);
+              throw new Error(`Your maximimum renting perdiod has to be atleast ${parseInt(this.minRentingPeriod, 10) + 1} days`);
             }
             return true;
           },
           max: 90,
         },
       },
+      availability: {
+        type: Sequelize.ARRAY(Sequelize.RANGE(Sequelize.DATE)),
+        allowNull: false,
+        validate: {
+          doAllRangesComplyWithMinRentingPeriod: function (value) {
+            _.each(value, (range) => {
+              const start = moment(range[0]);
+              const end = moment(range[1]);
+              const diff = end.diff(start, 'days');
+              if (diff < this.minRentingPeriod) {
+                throw new Error(`One of the availability slots range from ${start} to ${end} ` +
+                                `which is ${diff} days long and is less than the minimum renting ` +
+                                `period of ${this.minRentingPeriod} days`);
+              }
+            });
+          },
+        },
+      },
       price: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
         validate: {
           min: {
             args: [50],
@@ -73,6 +93,7 @@ module.exports = {
       },
       deposit: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
         validate: {
           min: {
             args: [100],
@@ -86,6 +107,7 @@ module.exports = {
       },
       length: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
         validate: {
           min: {
             args: [10],
@@ -99,6 +121,7 @@ module.exports = {
       },
       height: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
         validate: {
           min: {
             args: [10],
@@ -112,6 +135,7 @@ module.exports = {
       },
       width: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
         validate: {
           min: {
             args: [10],
@@ -157,6 +181,7 @@ module.exports = {
     );
   },
   relate: () => {
+    PG.Item.belongsTo(PG.User, { as: 'owner' });
   },
 };
 
