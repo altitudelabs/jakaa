@@ -38,6 +38,8 @@ const adminProps = {
 
 const itemProps = {
   id: 1,
+  ownerId: 2,
+  categoryId: 1,
   title: 'Nikon D500',
   brand: 'Nikon',
   model: 'd500',
@@ -58,11 +60,15 @@ const itemProps = {
   length: 100,
   height: 100,
   width: 100,
-  ownerId: 2,
+};
+
+const categoryProps = {
+  name: 'High-Tech',
+  shorthand: 'HT',
 };
 
 const reservationProps = {
-  
+
 }
 
 const seedUsers = () => {
@@ -73,6 +79,10 @@ const seedUsers = () => {
 
 const seedItems = () => {
   return PG.Item.create(itemProps);
+};
+
+const seedCategories = () => {
+  return PG.Category.create(categoryProps);
 };
 
 module.exports = (sequelize) => {
@@ -98,6 +108,7 @@ module.exports = (sequelize) => {
     if (resetTable) {
       // return;
       return seedUsers()
+      .then(() => seedCategories())
       .then(() => seedItems());
       // .then(() => seedCleaningGroup())
       // .then(() => seedEmail())
