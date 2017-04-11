@@ -181,7 +181,8 @@ module.exports = {
     );
   },
   relate: () => {
-    PG.Item.belongsTo(PG.User, { as: 'owner' });
+    PG.Item.belongsTo(PG.User, { as: 'owner', foreignKey: { allowNull: false } });
+    PG.Item.belongsTo(PG.Category, { as: 'category', foreignKey: { allowNull: false } });
   },
 };
 

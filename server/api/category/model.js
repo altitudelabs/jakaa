@@ -7,16 +7,14 @@ const Gandalf = require('../../service/gandalf');
 
 module.exports = {
   load: (sequelize) => {
-    PG.User = sequelize.define('user', {
-      role: {
-        type:   DataTypes.ENUM,
-        defaultValue: 'user',
-        values: ['user', 'admin'],
-      },
-      password: { type: DataTypes.STRING, allowNull: false },
-      email: { type: DataTypes.STRING, allowNull: false },
-      firstName: { type: DataTypes.STRING },
-      lastName: { type: DataTypes.STRING },
+    PG.Category = sequelize.define('category', {
+      // created: {
+      //   type:   DataTypes.ENUM,
+      //   defaultValue: 'user',
+      //   values: ['user', 'admin'],
+      // },
+      name: { type: DataTypes.STRING, allowNull: false },
+      shorthand: { type: DataTypes.STRING, allowNull: false },
     });
   },
   postLoad: () => {
@@ -28,13 +26,14 @@ module.exports = {
       };
     });
     restify.register(
-      PG.User,
+      PG.Category,
       {
         include: [
           'update',
           'getAll',
           'getSingle',
           'delete',
+          'create',
         ],
         middlewares: [...userLevelAuthMiddlewares,
           {
