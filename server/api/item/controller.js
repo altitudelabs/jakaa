@@ -1,6 +1,6 @@
 'use strict';
 
-// Get list of users
+// Get one item with owner and category details
 exports.getItemDetails = (req, res, next) => {
   PG.Item
   .findOne({
@@ -14,10 +14,15 @@ exports.getItemDetails = (req, res, next) => {
       model: PG.Category,
       as: 'category',
     }],
-  }).then((result) => {
+  })
+  .then((result) => {
     res.status(200).send(result);
   })
   .catch((err) => {
     next(err);
   });
 };
+
+exports.search = (req, res, next) => {
+
+}
