@@ -62,9 +62,14 @@ const itemProps = {
   width: 100,
 };
 
-const categoryProps = {
+const highTechCategoryProps = {
   name: 'High-Tech',
   shorthand: 'HT',
+};
+
+const fashionCategoryProps = {
+  name: 'Fashion',
+  shorthand: 'fas',
 };
 
 const reservationProps = {
@@ -82,7 +87,8 @@ const seedItems = () => {
 };
 
 const seedCategories = () => {
-  return PG.Category.create(categoryProps);
+  return PG.Category.create(highTechCategoryProps)
+  .then(PG.Category.create(fashionCategoryProps));
 };
 
 module.exports = (sequelize) => {

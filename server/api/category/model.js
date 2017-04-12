@@ -8,13 +8,17 @@ const Gandalf = require('../../service/gandalf');
 module.exports = {
   load: (sequelize) => {
     PG.Category = sequelize.define('category', {
-      // created: {
-      //   type:   DataTypes.ENUM,
-      //   defaultValue: 'user',
-      //   values: ['user', 'admin'],
-      // },
       name: { type: DataTypes.STRING, allowNull: false },
-      shorthand: { type: DataTypes.STRING, allowNull: false },
+      shorthand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        set: function (value) {
+          this.setDataValue('shorthand', value.toUpperCase());
+        },
+      },
+    }, {
+      timestamps: true,
+      paranoid: true,
     });
   },
   postLoad: () => {
