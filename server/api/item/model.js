@@ -39,6 +39,7 @@ module.exports = {
       },
       minRentingPeriod: {
         // User cannot specify that the minimum renting period is greater than a year
+        //NOTE: The unit used here is a 'day'
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -47,11 +48,12 @@ module.exports = {
         },
       },
       maxRentingPeriod: {
+        //NOTE: The unit used here is a 'day'
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           min: function (value) {
-            if (value <= this.minRentingPeriod) {
+            if (value < this.minRentingPeriod) {
               throw new Error(`Your maximimum renting perdiod has to be atleast ${parseInt(this.minRentingPeriod, 10) + 1} days`);
             }
             return true;

@@ -7,9 +7,9 @@ let expect = chai.expect;
 
 
 
-describe('User', () => {
-  it('Checking that 1 is equal to 1', (done) => {
-    expect(1).to.be.equal(1);
+describe('Item', () => {
+  it('Checking that 2 is equal to 2', (done) => {
+    expect(2).to.be.equal(1);
     done();
   });
 });
