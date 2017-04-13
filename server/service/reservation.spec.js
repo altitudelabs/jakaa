@@ -58,11 +58,11 @@ describe('Reservation Service', () => {
       startTime: '2017-04-10T10:40:20.815Z',
       endTime: '2017-04-01T10:40:20.815Z',
     };
-    const composedFunction = () => {
-      Promise.resolve(reservationService.isAvailable(validPastReservations, newReservation));
-    };
-    expect(composedFunction).to.throw(/End date/);
-    done();
+    reservationService.isAvailable(validPastReservations, newReservation)
+    .catch((err) => {
+      expect(err.message).to.contain('End date');
+      done();
+    });
   });
 
   it('Given an invalid set of prior reservations (malformed object) and a valid new reservation' +
@@ -78,11 +78,11 @@ describe('Reservation Service', () => {
       startTime: '2017-04-10T10:40:20.815Z',
       endTime: '2017-04-01T10:40:20.815Z',
     };
-    const composedFunction = () => {
-      Promise.resolve(reservationService.isAvailable(invalidPastReservations, newReservation));
-    };
-    expect(composedFunction).to.throw(/Invalid/);
-    done();
+    reservationService.isAvailable(invalidPastReservations, newReservation)
+    .catch((err) => {
+      expect(err.message).to.contain('Invalid');
+      done();
+    });
   });
 
   it('Given a valid set of prior reservations and an invalid new reservation' +
@@ -91,11 +91,11 @@ describe('Reservation Service', () => {
       what: 'are you reading this for?',
       cos: 'this is supposed to be invalid',
     };
-    const composedFunction = () => {
-      Promise.resolve(reservationService.isAvailable(validPastReservations, newReservation));
-    };
-    expect(composedFunction).to.throw(/Invalid/);
-    done();
+    reservationService.isAvailable(validPastReservations, newReservation)
+    .catch((err) => {
+      expect(err.message).to.contain('Invalid');
+      done();
+    });
   });
 
   it ('Given a valid set of prior reservations, invalid new reservation ' +
@@ -105,11 +105,14 @@ describe('Reservation Service', () => {
       startTime: '2017-04-10T10:40:20.815Z',
       endTime: '2017-04-15T10:40:20.815Z',
     };
-    const composedFunction = () => {
-      Promise.resolve(reservationService.isAvailable(validPastReservations, newReservation, sampleItemProps));
-    };
-    expect(composedFunction).to.throw(/shorter than the minimum renting period/);
-    done();
+    reservationService.isAvailable(validPastReservations, newReservation, sampleItemProps)
+    .then((result) => {
+      done();
+    })
+    .catch((err) => {
+      expect(err.message).to.contain('shorter than the minimum renting period');
+      done();
+    });
   });
 
   it ('Given a valid set of prior reservations, invalid new reservation ' +
@@ -119,10 +122,14 @@ describe('Reservation Service', () => {
       startTime: '2017-04-01T10:40:20.815Z',
       endTime: '2017-04-30T10:40:20.815Z',
     };
-    const composedFunction = () => {
-      Promise.resolve(reservationService.isAvailable(validPastReservations, newReservation, sampleItemProps));
-    };
-    expect(composedFunction).to.throw(/longer than the maximum renting period/);
-    done();
+    reservationService.isAvailable(validPastReservations, newReservation, sampleItemProps)
+    .then((result) => {
+      console.log(result);
+      done();
+    })
+    .catch((err) => {
+      expect(err.message).to.contain('longer than the maximum renting period');
+      done();
+    });
   });
 });
