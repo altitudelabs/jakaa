@@ -23,7 +23,7 @@ module.exports = {
       };
     });
     restify.register(
-      PG.Category,
+      PG.Wishlist,
       {
         include: [
           'update',

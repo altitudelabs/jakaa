@@ -22,10 +22,11 @@ exports.getItemDetails = (req, res, next) => {
     include: [{
       model: PG.User,
       as: 'owner',
-      attributes: ['id', 'role', 'email', 'firstName', 'firstName', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'email', 'firstName', 'lastName'],
     }, {
       model: PG.Category,
       as: 'category',
+      attributes: ['id', 'name', 'shorthand'],
     }],
   })
   .then((result) => {

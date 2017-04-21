@@ -5,6 +5,24 @@ const jwt = require('jsonwebtoken');
 const compose = require('composable-middleware');
 
 function attachUserToReq() {
+  if (config.env === 'development') {
+    return compose()
+      .use((req, res, next) => {
+        PG.User.findOne({ where: { id: 3, isDeleted: false } })
+          .then((user) => {
+            if (!user) {
+              req.user = null;
+              delete req.session.token;
+              return next();
+            }
+            console.log(`Attaching User ${user.firstName} ${user.lastName} as req.user`);
+            req.user = user;
+            req.session.token = genTokenFromId(req.user.id);
+            next();
+          })
+          .catch((e) => next(e));
+      });
+  }
   return compose()
     .use((req, res, next) => {
       console.log('user id from jwt is ');
