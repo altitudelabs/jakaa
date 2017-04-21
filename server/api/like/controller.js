@@ -2,8 +2,8 @@
 
 // Get list of users
 exports.index = (req, res, next) => {
-  PG.Category
+  PG.Like
     .findAll()
-    .then((categories) => res.status(200).send(categories))
+    .then((likes) => res.status(200).send(likes))
     .catch(e => next(e));
 };

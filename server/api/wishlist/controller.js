@@ -2,8 +2,8 @@
 
 // Get list of users
 exports.index = (req, res, next) => {
-  PG.Category
+  PG.Wishlist
     .findAll()
-    .then((categories) => res.status(200).send(categories))
+    .then((wishlist) => res.status(200).send(wishlist))
     .catch(e => next(e));
 };
