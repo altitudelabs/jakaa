@@ -1,7 +1,7 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import className from 'classnames';
+import classNames from 'classnames';
 import { IndexLink, Link } from 'react-router';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import action from './action';
@@ -74,7 +74,7 @@ class LeftMenu extends Component {
 
     // TODO may be able to optimize height calc like flipkart on touchmove
     return (
-      <div className={className('left-menu', { open })}>
+      <div className={classNames('left-menu', { open })}>
         <div
           className={'overlay'}
           onClick={action.close}

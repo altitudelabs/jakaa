@@ -1,7 +1,7 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import className from 'classnames';
+import classNames from 'classnames';
 import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import action from './action';
@@ -20,7 +20,7 @@ class Sample extends Component {
     } = this.props;
 
     return (
-      <div className={className('left-menu', { open })}>
+      <div className={classNames('left-menu', { open })}>
         <Touchable />
       </div>
     );
@@ -33,7 +33,7 @@ const Sample = (props) => {
   } = props;
 
   return (
-    <div className={className('left-menu', { open })}>
+    <div className={classNames('left-menu', { open })}>
       <Touchable />
     </div>
   );

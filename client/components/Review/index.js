@@ -1,7 +1,7 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import className from 'classnames';
+import classNames from 'classnames';
 import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import Touchable from '../../composeComponents/Ripple/Touch';
 
@@ -22,7 +22,7 @@ class Review extends Component {
     } = this.props;
 
     return (
-      <div className={className('left-menu', { open })}>
+      <div className={classNames('left-menu', { open })}>
         <Touchable />
       </div>
     );

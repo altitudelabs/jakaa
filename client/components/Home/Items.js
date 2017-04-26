@@ -1,15 +1,15 @@
 import React from 'react';
-import className from 'classnames';
+import classNames from 'classnames';
 import {
   List as ProductList,
 } from '../Product';
 
 const Items = () => {
   return (
-    <section className={className('items')}>
+    <section className={classNames('items')}>
       <h2 className={'section-title'}>explore items</h2>
       <ProductList
-        products={['high', 'sports', 'bag']}
+        products={[{ name: 'high' }, { name: 'sports' }, { name: 'bag' }]}
         verticalGutter={30}
         horizontalGutter={10}
         maxItemWidth={469}

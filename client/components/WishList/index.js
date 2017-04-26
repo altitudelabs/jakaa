@@ -1,6 +1,6 @@
 import './style.scss';
 import React, { Component } from 'react';
-import className from 'classnames';
+import classNames from 'classnames';
 import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import {
   List as ProductList,
@@ -13,7 +13,7 @@ class WishList extends Component {
   }
   render() {
     return (
-      <div className={className('wish-list')}>
+      <div className={classNames('wish-list')}>
         <h1>Wish List</h1>
         <ProductList />
       </div>

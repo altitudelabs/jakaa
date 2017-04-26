@@ -1,6 +1,6 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
-import className from 'classnames';
+import classNames from 'classnames';
 import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import { Link } from 'react-router';
@@ -13,7 +13,7 @@ class FAQ extends Component {
   }
   render() {
     return (
-      <div className={className('FAQ')}>
+      <div className={classNames('FAQ')}>
         <h1 className={'title'}>
           Freqently asked questions
         </h1>

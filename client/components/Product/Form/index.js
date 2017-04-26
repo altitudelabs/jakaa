@@ -1,8 +1,6 @@
 import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import className from 'classnames';
-import Dropzone from 'react-dropzone';
 
 import { whyDidYouUpdateWrapper } from '../../../utils/why-did-you-update';
 import Touchable from '../../../composeComponents/Ripple/Touch';

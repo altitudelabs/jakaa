@@ -2,7 +2,7 @@ import './style.scss';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
-import className from 'classnames';
+import classNames from 'classnames';
 
 import { whyDidYouUpdateWrapper } from '../../../utils/why-did-you-update';
 import Touchable from '../../../composeComponents/Ripple/Touch';
@@ -22,7 +22,7 @@ class TOC extends Component {
     } = this.props;
 
     return (
-      <div className={className('product-TOC')}>
+      <div className={classNames('product-TOC')}>
         <h1 className={'title'}>{'Before renting'}</h1>
         <div className={'instruction'}>
           <span>

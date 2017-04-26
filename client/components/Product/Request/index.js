@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import action from './action';
 import reducer from './reducer';
 
-import className from 'classnames';
+import classNames from 'classnames';
 
 import { whyDidYouUpdateWrapper } from '../../../utils/why-did-you-update';
 import Touchable from '../../../composeComponents/Ripple/Touch';
@@ -22,7 +22,7 @@ class Request extends Component {
       onSubmit,
     } = this.props;
     return (
-      <div className={className('product-request')}>
+      <div className={classNames('product-request')}>
         <h1 className={'title'}>{'Request an item'}</h1>
         <div className={'price'}>
           <span className={'dollar'}>{'HK$ 100'}</span>
