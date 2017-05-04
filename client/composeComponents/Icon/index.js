@@ -1,15 +1,19 @@
 import './style.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Icon = ({ icon }) => {
-  const svg = require(`raw-loader!./icons/${icon}.svg`);
+  const svg = icon ? require(`raw-loader!./icons/${icon}.svg`) : '';
 
   return (
-    <div
+    icon ? <div
       className={'icon'}
       dangerouslySetInnerHTML={{ __html: svg }}
-    />
+    /> : <div />
   );
 }
+
+Icon.propTypes = {
+	icon: PropTypes.string.isRequired
+};
 
 export default Icon;
