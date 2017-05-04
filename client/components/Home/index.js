@@ -4,6 +4,7 @@ import Touchable from '../../composeComponents/Ripple/Touch';
 import Header from './Header';
 import Trends from './Trends';
 import Items from './Items';
+import Icon from '../../composeComponents/Icon';
 import { whyDidYouUpdateWrapper } from '../../utils/why-did-you-update';
 import { action as SearchAction } from '../Search';
 
@@ -25,10 +26,14 @@ class Home extends Component {
     return (
       <div className={'home'}>
         <Header />
+
         <section className={'search'}>
           <div className={'bar'} onClick={this.onSearchBarClick}>
             <Touchable />
             <div className={'logo'} />
+
+            <Icon icon="github" />
+            
             <span>{'Search'}</span>
           </div>
         </section>
