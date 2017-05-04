@@ -30,8 +30,7 @@ class Home extends Component {
         <section className={'search'}>
           <div className={'bar'} onClick={this.onSearchBarClick}>
             <Touchable />
-            <div className={'logo'} />
-
+            
             <Icon icon="search" />
             
             <span>{'Search'}</span>
