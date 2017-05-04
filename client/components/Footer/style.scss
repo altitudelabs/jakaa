@@ -1,0 +1,16 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: #F1F1F1;
+
+  ul {
+    width: 100%;
+
+    li {
+      display: inline-block;
+      width: 50%;
+      margin-bottom: 15px;
+    }
+  }
+}
