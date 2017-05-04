@@ -22,16 +22,31 @@ const Footer = () => {
           <li>
             <Link to={'/privacy'}>Privacy</Link>
           </li>
-
         </ul>
       </div>
 
       <div>
-        section 2
+        English
       </div>
 
       <div>
-        section 3
+        <div>&copy; Jakaa, Inc.</div>
+
+        <div>
+          <ul className={'social-list'}>
+            <li>
+              <a href="#">Face</a>
+            </li>
+
+            <li>
+              <a href="#">Twit</a>
+            </li>
+
+            <li>
+              <a href="#">Insta</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
   );

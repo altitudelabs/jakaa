@@ -4,6 +4,19 @@ footer {
   padding: 25px;
   background-color: #F1F1F1;
 
+  > div {
+    &:nth-child(2) {
+      padding: 10px 0 25px;
+    }
+
+    &:last-child {
+      > div {
+        display: inline-block;
+        width: 50%;
+      }
+    }
+  }
+
   ul {
     width: 100%;
 
@@ -11,6 +24,11 @@ footer {
       display: inline-block;
       width: 50%;
       margin-bottom: 15px;
+    }
+
+    &.social-list li {
+      width: auto;
+      padding-right: 10px;
     }
   }
 }
