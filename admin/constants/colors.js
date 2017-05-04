@@ -1,4 +1,4 @@
-const style = Object.freeze({
+const colors = Object.freeze({
   primaryColor: '#3E50B4',
   backgroundColor: '#F0F0F0',
   secondaryColor: '#078B75',
@@ -25,4 +25,4 @@ const style = Object.freeze({
   lightGrayColor: '#A5A5A5',
 });
 
-export default style;
+export default colors;
