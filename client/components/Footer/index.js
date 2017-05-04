@@ -4,48 +4,28 @@ import { Link } from 'react-router';
 
 const Footer = () => {
   return (
-    <footer>
-      <div>
-        <ul>
-          <li>
-            <Link to={'/fa'}>FA</Link>
-          </li>
+    <footer className={'footer'}>
+      <div className={'footer__links'}>
+        <div>
+          <Link to={'/fa'}>FAQ</Link>
+          <Link to={'/contact'}>Contact Us</Link>
+          <Link to={'/terms'}>Terms Of Use</Link>
+          <Link to={'/privacy'}>Privacy & Security</Link>
+        </div>
 
-          <li>
-            <Link to={'/contact'}>Contact</Link>
-          </li>
-
-          <li>
-            <Link to={'/terms'}>Terms</Link>
-          </li>
-
-          <li>
-            <Link to={'/privacy'}>Privacy</Link>
-          </li>
-        </ul>
+        {/* TODO: Replace with Language component to switch language */}
+        <div className={'language'}>
+          English
+        </div>
       </div>
 
-      <div>
-        English
-      </div>
-
-      <div>
+      <div className={'footer__social'}>
         <div>&copy; Jakaa, Inc.</div>
 
         <div>
-          <ul className={'social-list'}>
-            <li>
-              <a href="#">Face</a>
-            </li>
-
-            <li>
-              <a href="#">Twit</a>
-            </li>
-
-            <li>
-              <a href="#">Insta</a>
-            </li>
-          </ul>
+          <a href="#">Face</a>
+          <a href="#">Twit</a>
+          <a href="#">Insta</a>
         </div>
       </div>
     </footer>
