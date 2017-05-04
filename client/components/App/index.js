@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import Touchable from '../../composeComponents/Ripple/Touch';
 import LeftMenu from '../LeftMenu';
 import Header from '../Header';
+import Footer from '../Footer';
 import Search from '../Search';
 class App extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends Component {
         <LeftMenu />
         {this.props.children}
         <Search />
+        <Footer />
       </div>
     );
   }
