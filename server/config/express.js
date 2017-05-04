@@ -14,6 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
 const boolParser = require('express-query-boolean');
+const authenticate = require('../middleware/authenticate');
 
 module.exports = (app) => {
   // view engine Setup
@@ -45,7 +46,7 @@ module.exports = (app) => {
   }));
   app.use(express.static(config.staticPath));
   app.use(favicon(path.join(config.staticPath, 'favicon.ico')));
-
+  authenticate.attachUserToReq();
 
   // TODO find a better place for this
   // app.use('/admin', express.static(`${app.locals.env.root}/admin/dist`));
