@@ -1,5 +1,9 @@
-import style from './style';
+import styles from './styles';
+import colors from './colors';
+import sizes from './sizes';
 
 export default {
-  style,
+  styles,
+  colors,
+  sizes,
 };
