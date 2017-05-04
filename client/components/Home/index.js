@@ -32,7 +32,7 @@ class Home extends Component {
             <Touchable />
             <div className={'logo'} />
 
-            <Icon icon="github" />
+            <Icon icon="search" />
             
             <span>{'Search'}</span>
           </div>
