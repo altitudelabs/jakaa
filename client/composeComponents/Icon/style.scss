@@ -1,0 +1,16 @@
+.icon {
+  display: inline-block;
+  font-size: 16px;
+  color: #000;
+  width: 1em;
+  height: 1em;
+  margin: 0.1em;
+  box-sizing: border-box;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    fill: #000;
+    stroke: #000;
+  }
+}
