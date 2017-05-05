@@ -4,7 +4,6 @@
   .title {
     text-align: center;
     font-weight: bold;
-    padding-top: 90px;
     color: #51585A;
     h1 {
       font-size: 33px;
@@ -74,7 +73,7 @@
       }
 
       &.sports {
-        background: linear-gradient(bottom right, #7ABCFD, #D903E3);
+        background: linear-gradient(135deg, #d803e3 0%, #84abf5 90%, #7abcfd 100%);
       }
 
       &.bag {
